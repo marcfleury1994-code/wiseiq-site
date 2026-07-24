@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script defer="" src="/js/wiq-perf.js?v=20260721"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Credit Score Impact Calculator — How Actions | WiseIQ</title>
+<meta content="See how credit actions affect your FICO score before you make them. Model the impact of new loans, credit cards, payoffs, and late payments. Free tool." name="description"/>
+<link href="https://wiseiq.net/pages/calculator-credit-score-impact" rel="canonical"/>
+<meta content="Credit Score Impact Calculator — How Actions | WiseIQ" property="og:title"/>
+<meta content="See how credit actions affect your FICO score before you make them. Model the impact of new loans, credit cards, payoffs, and late payments. Free tool." property="og:description"/>
+<meta content="https://wiseiq.net/pages/calculator-credit-score-impact.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/css/site.min.css?v=20260721" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:#0B1F3A;background:#fff;margin:0;}
+.page-wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+/* Hero */
+.hero-banner{background:linear-gradient(135deg,#0B1F3A 0%,#1A3A6B 100%);color:#fff;padding:52px 0 44px;}
+.hero-banner h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-0.03em;color:#fff;margin-bottom:12px;line-height:1.15;}
+.hero-banner p{font-size:16px;color:rgba(255,255,255,0.82);max-width:640px;line-height:1.6;}
+.hero-stats{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;}
+.hero-stat strong{display:block;font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.02em;}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;}
+.badge-pill{display:inline-block;background:rgba(255,255,255,0.15);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+.breadcrumb{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:16px;}
+.breadcrumb a{color:rgba(255,255,255,0.65);text-decoration:none;}
+.breadcrumb span{margin:0 6px;}
+/* Editorial note */
+.editorial-note{display:flex;align-items:center;gap:10px;font-size:13px;color:#64748B;padding:14px 0;border-bottom:1px solid #E2E8F0;margin-bottom:0;}
+/* Layout */
+.content-grid{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;margin-top:40px;padding-bottom:60px;}
+/* Calculator body */
+.calc-body{margin-top:32px;}
+.calc-disclosure{background:#FFF9E6;border:1px solid #FDE68A;border-radius:8px;padding:12px 16px;font-size:12px;color:#78350F;margin-bottom:24px;line-height:1.6;}
+.calc-disclosure a{color:#78350F;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.calc-panel{background:#fff;border:1.5px solid #E2E8F0;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(11,31,58,0.05);}
+.calc-panel-title{font-size:15px;font-weight:700;color:#0B1F3A;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #F1F5F9;letter-spacing:-0.01em;}
+.calc-field{margin-bottom:18px;}
+.calc-field label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.calc-input-wrap{position:relative;}
+.calc-input-wrap.has-prefix input{padding-left:28px;}
+.calc-input-wrap.has-suffix input{padding-right:36px;}
+.calc-input-wrap .prefix{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;color:#94A3B8;pointer-events:none;}
+.calc-input-wrap .suffix{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:15px;color:#94A3B8;pointer-events:none;}
+.calc-input-wrap input,.calc-select-wrap select{width:100%;padding:11px 14px;border:1.5px solid #E2E8F0;border-radius:8px;font-size:15px;color:#0B1F3A;background:#fff;transition:border-color 0.15s;outline:none;}
+.calc-input-wrap input:focus,.calc-select-wrap select:focus{border-color:#1A6FD4;}
+.calc-select-wrap{position:relative;}
+.calc-select-wrap select{appearance:none;padding-right:32px;cursor:pointer;}
+.calc-select-wrap::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#94A3B8;pointer-events:none;}
+.calc-btn-primary{width:100%;background:#1A6FD4;color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;}
+.calc-btn-primary:hover{background:#1558A8;}
+/* Results */
+.calc-results-empty{text-align:center;padding:40px 20px;color:#94A3B8;}
+.calc-results-empty svg{margin-bottom:12px;opacity:0.4;}
+.calc-results-empty p{font-size:14px;}
+.calc-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.calc-stat{background:#F8FAFC;border-radius:10px;padding:16px;text-align:center;}
+.calc-stat.highlight{background:linear-gradient(135deg,#0B1F3A,#1A3A6B);grid-column:1/-1;}
+.calc-stat.highlight .calc-stat-label{color:rgba(255,255,255,0.7);}
+.calc-stat.highlight .calc-stat-value{color:#fff;}
+.calc-stat-label{font-size:11px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;}
+.calc-stat-value{font-size:22px;font-weight:800;color:#0B1F3A;letter-spacing:-0.02em;}
+/* Bar chart */
+.calc-bar-chart{margin-top:16px;}
+.calc-bar-chart-label{font-size:12px;font-weight:600;color:#64748B;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em;}
+.calc-bar-track{display:flex;height:12px;border-radius:6px;overflow:hidden;background:#E2E8F0;}
+.calc-bar-principal{background:#2563EB;transition:width 0.4s;}
+.calc-bar-interest{background:#F59E0B;transition:width 0.4s;}
+.calc-bar-legend{display:flex;gap:16px;margin-top:8px;}
+.calc-bar-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#475569;}
+.calc-bar-legend-dot{width:10px;height:10px;border-radius:50%;}
+/* Amortization table */
+.calc-amort-wrap{margin-top:20px;}
+.calc-amort-toggle{background:none;border:1.5px solid #E2E8F0;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;color:#475569;cursor:pointer;width:100%;}
+.calc-amort-toggle:hover{border-color:#1A6FD4;color:#1A6FD4;}
+.amort-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;}
+.amort-table th{background:#0B1F3A;color:#fff;padding:10px 12px;text-align:right;font-weight:600;font-size:12px;}
+.amort-table th:first-child{text-align:left;}
+.amort-table td{padding:8px 12px;text-align:right;border-bottom:1px solid #F3F4F6;}
+.amort-table td:first-child{text-align:left;}
+.amort-table tr:nth-child(even){background:#F8FAFC;}
+/* DTI gauge */
+.dti-gauge{margin-top:16px;}
+.dti-bar-track{height:16px;border-radius:8px;background:linear-gradient(to right,#22C55E 0%,#22C55E 35%,#F59E0B 35%,#F59E0B 50%,#EF4444 50%,#EF4444 100%);position:relative;overflow:visible;}
+.dti-needle{position:absolute;top:-4px;width:4px;height:24px;background:#0B1F3A;border-radius:2px;transform:translateX(-50%);transition:left 0.4s;}
+.dti-labels{display:flex;justify-content:space-between;font-size:11px;color:#64748B;margin-top:6px;}
+/* FAQ */
+.faq-section{margin-top:40px;}
+.faq-section h2{font-size:22px;font-weight:700;color:#0B1F3A;margin-bottom:20px;letter-spacing:-0.02em;}
+.faq-item{border-bottom:1px solid #E2E8F0;padding:18px 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-size:15px;font-weight:700;color:#0B1F3A;margin-bottom:8px;}
+.faq-a{font-size:14px;color:#475569;line-height:1.7;}
+/* Related */
+.related-links{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:20px 22px;margin:32px 0;}
+.related-links h4{font-size:13px;font-weight:700;color:#0B1F3A;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+.related-links a{display:inline-block;font-size:13px;color:#1A6FD4;text-decoration:none;margin-right:16px;margin-bottom:6px;}
+.related-links a:hover{text-decoration:underline;}
+/* Sidebar */
+.sidebar{position:sticky;top:88px;max-height:calc(100vh - 108px);overflow-y:auto;}
+.sidebar-card{background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(11,31,58,0.07);margin-bottom:20px;}
+.sidebar-card h3{font-size:15px;font-weight:700;color:#0B1F3A;margin-bottom:6px;}
+.sidebar-card p{font-size:13px;color:#64748B;margin-bottom:16px;line-height:1.5;}
+.btn-sidebar{display:block;text-align:center;background:#0B1F3A;color:#fff;font-weight:700;font-size:14px;padding:13px 20px;border-radius:10px;text-decoration:none;transition:all 0.15s;margin-bottom:8px;}
+.btn-sidebar:hover{background:#1A6FD4;color:#fff;}
+.btn-sidebar-green{display:block;text-align:center;background:#16A34A;color:#fff;font-weight:700;font-size:14px;padding:13px 20px;border-radius:10px;text-decoration:none;transition:all 0.15s;margin-bottom:8px;}
+.btn-sidebar-green:hover{background:#15803D;color:#fff;}
+.btn-sidebar-outline{display:block;text-align:center;background:transparent;color:#1A6FD4;font-weight:600;font-size:13px;padding:10px 20px;border-radius:10px;border:1.5px solid rgba(26,111,212,0.3);text-decoration:none;margin-top:10px;transition:all 0.15s;}
+.sidebar-offer-item{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #F1F5F9;}
+.sidebar-offer-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.sidebar-offer-item .offer-name{font-size:13px;font-weight:700;color:#0B1F3A;margin-bottom:2px;}
+.sidebar-offer-item .offer-desc{font-size:12px;color:#64748B;margin-bottom:8px;}
+.btn-offer{background:#16A34A;color:#fff;font-weight:700;font-size:13px;padding:9px 18px;border-radius:8px;text-decoration:none;display:inline-block;transition:all 0.15s;}
+.btn-offer:hover{background:#15803D;color:#fff;}
+/* Sources */
+.article-sources{margin-top:40px;padding-top:24px;border-top:1px solid #E2E8F0;font-size:12px;color:#94A3B8;}
+.article-sources a{color:#94A3B8;}
+/* Inline offer strip */
+.inline-offer{display:flex;align-items:center;gap:16px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:12px;padding:16px 20px;margin:24px 0;}
+.inline-offer-text strong{display:block;font-size:14px;font-weight:700;color:#0B1F3A;margin-bottom:3px;}
+.inline-offer-text span{font-size:13px;color:#475569;}
+/* Info box */
+.info-box{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#1E40AF;line-height:1.6;}
+.info-box strong{display:block;margin-bottom:4px;}
+/* Interpretation table */
+.interp-table{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;}
+.interp-table th{background:#F8FAFC;padding:10px 14px;text-align:left;font-weight:700;color:#0B1F3A;border-bottom:2px solid #E2E8F0;}
+.interp-table td{padding:10px 14px;border-bottom:1px solid #F1F5F9;color:#334155;}
+.interp-table tr:last-child td{border-bottom:none;}
+.badge-green{background:#DCFCE7;color:#15803D;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.badge-yellow{background:#FEF9C3;color:#854D0E;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.badge-red{background:#FEE2E2;color:#991B1B;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+/* Mobile */
+@media(max-width:768px){
+  .content-grid{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .calc-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:20px;}
+  .calc-stat-grid{grid-template-columns:1fr;}
+  .calc-stat.highlight{grid-column:1;}
+}
+</style>
+<link href="../css/calc-sliders.css?v=20260721" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Calculator Credit Score Impact",
+      "url": "https://wiseiq.net/pages/calculator-credit-score-impact.html",
+      "dateModified": "2026-05-02",
+      "datePublished": "2026-01-01",
+      "author": {
+        "@type": "Organization",
+        "name": "WiseIQ Editorial Team",
+        "url": "https://wiseiq.net"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "WiseIQ",
+        "url": "https://wiseiq.net",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://wiseiq.net/assets/wiseiq-logo.png"
+        }
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1",
+          "h2",
+          ".speakable"
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Estimate Credit Score Impact",
+      "description": "Estimate how financial actions like opening a new card or missing a payment will affect your credit score.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter your current credit score",
+          "text": "Input your current FICO score or estimated range.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Select the action to evaluate",
+          "text": "Choose the financial action you are considering (new card, missed payment, etc.).",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter relevant details",
+          "text": "Add details like the credit limit, balance, or payment amount.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Review the estimated impact",
+          "text": "See the estimated score change and how long it will take to recover.",
+          "position": 4
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://wiseiq.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://wiseiq.com/pages/tools.html"
+    }
+  ]
+}
+</script>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="@WiseIQ" name="twitter:site"/>
+<meta content="Credit Score Impact Calculator — How Actions | WiseIQ" name="twitter:title"/>
+<meta content="See how credit actions affect your FICO score before you make them. Model the impact of new loans, credit cards, payoffs, and late payments. Free tool." name="twitter:description"/>
+<meta content="https://wiseiq.net/assets/og-credit-score.jpg" name="twitter:image"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Credit Score Impact Calculator \u2014 How Actions Affect Your",
+  "image": "https://wiseiq.net/assets/og-image.jpg",
+  "datePublished": "2026-03-29",
+  "dateModified": "2026-05-01",
+  "author": {
+    "@type": "Organization",
+    "name": "WiseIQ"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WiseIQ",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wiseiq.net/favicon.ico"
+    }
+  },
+  "description": "See how credit actions affect your FICO score before you make them. Model the impact of new loans, credit cards, payoffs, and late payments. Free tool.",
+  "url": "https://wiseiq.net/pages/calculator-credit-score-impact.html"
+}</script>
+<script>
+(function(){
+  var html = document.documentElement;
+  var stored = localStorage.getItem('wiseiq-theme');
+  if(stored === 'dark') html.setAttribute('data-theme', 'dark');
+  
+  // Create toggle button
+  function createDarkModeToggle() {
+    var existing = document.getElementById('darkModeToggle');
+    if(existing) return;
+    var btn = document.createElement('button');
+    btn.id = 'darkModeToggle';
+    btn.className = 'dark-mode-toggle';
+    btn.setAttribute('aria-label', 'Toggle dark mode');
+    btn.setAttribute('title', 'Toggle dark mode');
+    btn.innerHTML = html.getAttribute('data-theme') === 'dark' 
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    btn.addEventListener('click', function(){
+      var isDark = html.getAttribute('data-theme') === 'dark';
+      if(isDark){
+        html.removeAttribute('data-theme');
+        localStorage.setItem('wiseiq-theme', 'light');
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('wiseiq-theme', 'dark');
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+    });
+    // Insert into navbar
+    var nav = document.querySelector('.nav-inner') || document.querySelector('nav') || document.querySelector('header');
+    if(nav) nav.appendChild(btn);
+    else document.body.appendChild(btn);
+  }
+  
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', createDarkModeToggle);
+  } else {
+    createDarkModeToggle();
+  }
+})();
+</script>
+<meta content="WiseIQ" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="2026-05-01T00:00:00+00:00" property="article:published_time"/>
+<meta content="2026-05-01T00:00:00+00:00" property="article:modified_time"/>
+<meta content="WiseIQ Editorial Team" property="article:author"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<script defer="" src="/js/wiq-schema.js?v=20260721"></script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0a7ea4">
+<link href="/css/calc-modern.css?v=20260721" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head><body>
+<header class="topnav">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+<div class="topnav-in">
+<a class="brand" href="/"><span>Wise<em>IQ</em></span></a>
+<nav class="navlinks">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a class="nav-search" href="/pages/search.html">Search</a>
+</nav>
+<label for="nav-toggle" class="nav-burger"><span></span><span></span><span></span></label>
+<a class="nav-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate</a>
+</div>
+<nav class="mobile-menu">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a href="/pages/search.html">Search</a>
+<a class="mm-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate at Upstart →</a>
+</nav>
+</header>
+<div class="hero-banner">
+<div class="page-wrap">
+<div class="breadcrumb"><a href="/index.html">Home</a> <span>›</span> <a href="/pages/tools.html">Tools</a> <span>›</span> <span>Credit Score Impact Calculator</span></div>
+<div class="badge-pill">FREE TOOL</div>
+<h1>Credit Score Impact Calculator</h1>
+<div class="compact-rate-banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#EEF4FF;border:1px solid #BFDBFE;border-left:4px solid #1a6fb5;border-radius:8px;padding:10px 18px;margin:16px 0;">
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+<span style="font-size:0.65rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:#1a6fb5;color:#fff;padding:2px 8px;border-radius:20px;white-space:nowrap;">PARTNER OFFER</span>
+<span style="font-size:1.05rem;font-weight:800;color:#1a6fb5;">6.20% APR</span>
+<span style="font-size:0.82rem;color:#374151;">at Upstart · Soft credit check only</span>
+</div>
+<a href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1a6fb5;color:#fff;padding:9px 18px;border-radius:7px;font-weight:700;font-size:0.84rem;text-decoration:none;white-space:nowrap;flex-shrink:0;" target="_blank">
+    Check Rate — No Hard Pull
+    <svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="13"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+<div class="last-updated-date"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg> Last Updated: May 2026</div>
+<p>Model how different credit actions affect your FICO score before you make them. See the estimated impact of new loans, credit card payoffs, hard inquiries, and more.</p>
+<div class="hero-stats">
+<div class="hero-stat"><strong>714</strong><span>Avg. U.S. FICO Score</span></div>
+<div class="hero-stat"><strong>670+</strong><span>Good credit threshold</span></div>
+<div class="hero-stat"><strong>5 factors</strong><span>FICO score components</span></div>
+</div>
+</div>
+</div>
+<div class="page-wrap">
+<div class="editorial-note">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M8 10h8M8 14h5"></path></svg>
+<span>By <strong>WiseIQ Editorial</strong> · Updated April 2026 · Editorially independent</span>
+</div>
+</div>
+<div class="page-wrap">
+<main><div class="content-grid">
+<div class="article-body">
+<p style="font-size:15px;color:#475569;line-height:1.7;margin-bottom:24px;">Your FICO score is calculated from five factors. Understanding how each action affects your score lets you make smarter credit decisions. This tool provides educational estimates based on FICO scoring methodology — actual changes vary based on your full credit profile.</p>
+<div class="calc-body">
+<div class="calc-disclosure">
+<strong>Advertiser Disclosure:</strong> WiseIQ is an independent comparison service. WiseIQ has affiliate relationships with a limited number of partners, including Upstart. We may earn a commission when you apply through links to those partners. Other products are included for editorial comparison only, and we receive no compensation for them. This does not influence our editorial evaluations. <a href="how-we-rank.html">See our methodology →</a>
+</div>
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-panel-title">Your Current Profile</div>
+<div class="calc-field"><label>Current Credit Score</label><div class="calc-input-wrap"><input id="cs-score" max="850" min="300" oninput="calcCS(); document.getElementById('cs-score-val').textContent=this.value" style="width:100%;accent-color:#1A6FD4;" type="range" value="650"/><div style="display:flex;justify-content:space-between;font-size:12px;color:#64748B;margin-top:4px;"><span>300</span><span id="cs-score-val" style="font-weight:700;color:#0B1F3A;">650</span><span>850</span></div></div></div>
+<div class="calc-panel-title" style="margin-top:16px;">Simulate an Action</div>
+<div class="calc-field"><label>Action to Simulate</label><div class="calc-select-wrap"><select id="cs-action" onchange="calcCS()">
+<option value="hard_inquiry">Apply for new credit (hard inquiry)</option>
+<option value="new_account">Open new credit card or loan</option>
+<option value="payoff_card">Pay off a credit card balance</option>
+<option value="late_30">30-day late payment</option>
+<option value="late_60">60-day late payment</option>
+<option value="late_90">90+ day late payment</option>
+<option value="util_down">Reduce credit utilization by 20%</option>
+<option value="util_up">Increase credit utilization by 20%</option>
+<option value="collection">Collection account added</option>
+<option value="bankruptcy">Bankruptcy filed</option>
+</select></div></div>
+</div>
+<div class="calc-panel">
+<div class="calc-panel-title">Estimated Score Impact</div>
+<div class="calc-stat-grid">
+<div class="calc-stat">
+<div class="calc-stat-label">Current Score</div>
+<div class="calc-stat-value" id="cs-current-display">650</div>
+</div>
+<div class="calc-stat highlight">
+<div class="calc-stat-label">Estimated Impact</div>
+<div class="calc-stat-value" id="cs-impact" style="font-size:36px;">—</div>
+</div>
+<div class="calc-stat" style="grid-column:1/-1;">
+<div class="calc-stat-label">Estimated New Score Range</div>
+<div class="calc-stat-value" id="cs-new-score" style="font-size:20px;">—</div>
+<button class="calc-print-btn" onclick="window.print()">
+<svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="15"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect height="8" width="12" x="6" y="14"></rect></svg>
+  Save as PDF
+</button>
+</div>
+</div>
+<div id="cs-explanation" style="margin-top:16px;font-size:13px;color:#475569;line-height:1.7;background:#F8FAFC;border-radius:8px;padding:14px;"></div>
+</div>
+</div>
+<div class="info-box" style="margin-top:24px;"><strong>Educational Estimate Only</strong>This tool uses general FICO scoring methodology to provide educational estimates. Actual score changes depend on your complete credit profile, the specific scoring model used by the lender, and other factors not captured here. For your actual score, check AnnualCreditReport.com (free) or myFICO.com.</div>
+<h2 style="font-size:20px;font-weight:700;color:#0B1F3A;margin:32px 0 16px;">FICO Score Factors</h2>
+<div class="rate-verified-badge"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="13"><polyline points="20 6 9 17 4 12"></polyline></svg> Rates verified May 2026 · Updated weekly</div>
+<table class="interp-table">
+<tr><th>Factor</th><th>Weight</th><th>What Affects It</th></tr>
+<tr><td><strong>Payment History</strong></td><td>35%</td><td>On-time payments, late payments, collections, bankruptcies</td></tr>
+<tr><td><strong>Credit Utilization</strong></td><td>30%</td><td>Balance ÷ credit limit on revolving accounts</td></tr>
+<tr><td><strong>Credit Age</strong></td><td>15%</td><td>Average age of accounts, age of oldest/newest account</td></tr>
+<tr><td><strong>Credit Mix</strong></td><td>10%</td><td>Mix of revolving (cards) and installment (loans) accounts</td></tr>
+<tr><td><strong>New Credit</strong></td><td>10%</td><td>Hard inquiries, recently opened accounts</td></tr>
+</table>
+<div class="related-links">
+<h4>More Free Financial Tools</h4>
+<a href="calculator-personal-loan.html">Personal Loan Calculator</a><a href="calculator-debt-to-income.html">Debt-to-Income Calculator</a><a href="calculator-apr.html">APR Calculator</a><a href="calculator-early-payoff.html">Early Payoff Calculator</a><a href="calculator-loan-comparison.html">Loan Comparison Calculator</a>Savings Goal Calculator<a href="calculator-emergency-fund.html">Emergency Fund Calculator</a>
+</div>
+<div class="faq-section">
+<div class="share-bar">
+<span class="share-bar-label">Share</span>
+<a class="share-btn twitter" href="#" rel="noopener" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+    Share
+  </a>
+<a class="share-btn facebook" href="#" rel="noopener" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+    Share
+  </a>
+<button class="share-btn copy-link">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    Copy Link
+  </button>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q">How much does a hard inquiry affect my credit score?</div><div class="faq-a">A single hard inquiry typically reduces your FICO score by 5–10 points for borrowers with good credit. For borrowers with thin credit files or recent inquiries, the impact can be 10–15 points. Hard inquiries remain on your credit report for 2 years but only affect your score for 12 months. Multiple inquiries for the same type of loan within a 14–45 day window are treated as a single inquiry by FICO.</div></div>
+<div class="faq-item"><div class="faq-q">How quickly does my score recover after a hard inquiry?</div><div class="faq-a">Most borrowers see their score return to pre-inquiry levels within 3–6 months, assuming no new negative information is added. The recovery is faster if you have a long credit history and low utilization. If you were approved for the loan and make on-time payments, the positive payment history can actually improve your score within 6–12 months.</div></div>
+<div class="faq-item"><div class="faq-q">What is the fastest way to improve my credit score?</div><div class="faq-a">The two fastest levers are: (1) Reduce credit card utilization — paying down balances to below 30% of your credit limit can improve your score within one billing cycle (30 days). (2) Dispute errors — if your credit report has incorrect negative information, disputing it can result in removal within 30–45 days. Making on-time payments is the most important long-term factor but takes 6–12 months to show significant improvement.</div></div>
+<div class="faq-item"><div class="faq-q">Does checking my own credit score hurt it?</div><div class="faq-a">No. Checking your own credit score is a soft inquiry and has zero impact on your FICO score. You can check your score as often as you want without any effect. Only hard inquiries — initiated by lenders when you apply for credit — affect your score. Upstart, SoFi, and most online lenders offer pre-qualification with a soft pull so you can check your rate without affecting your score.</div></div>
+<div class="faq-item"><div class="faq-q">How long do negative items stay on my credit report?</div><div class="faq-a">Late payments (30+ days): 7 years from the date of delinquency. Collections: 7 years from the original delinquency date. Chapter 7 bankruptcy: 10 years. Chapter 13 bankruptcy: 7 years. Hard inquiries: 2 years (affect score for 12 months). The impact of negative items diminishes over time — a 3-year-old late payment has much less impact than a recent one.</div></div>
+</div>
+<div class="article-sources">
+<strong>Sources &amp; Methodology</strong><br/>
+  WiseIQ's editorial team researches and fact-checks all content using primary sources. Calculator formulas use standard financial mathematics (amortization, compound interest). Data sources include:
+  <a href="https://www.consumerfinance.gov" rel="noopener" target="_blank">Consumer Financial Protection Bureau (CFPB)</a> ·
+  <a href="https://www.federalreserve.gov/releases/g19/" rel="noopener" target="_blank">Federal Reserve G.19</a> ·
+  <a href="https://www.myfico.com" rel="noopener" target="_blank">myFICO</a> ·
+  Lender websites (rates verified April 2026).
+</div>
+</div>
+</div>
+<div class="sidebar">
+<div class="sidebar-card">
+<h3>WiseIQ Top Pick</h3>
+<p>Personal loans for all credit types — rates from 6.20% APR, up to $75,000.</p>
+<a class="btn-sidebar-green" href="https://upstart.9c65.net/9VW6GY" rel="noopener sponsored" target="_blank">Check Your Rate on Upstart →</a>
+<div style="font-size:11px;color:#94A3B8;text-align:center;margin-top:6px;">Soft pull · No credit impact</div>
+Read Upstart Review
+</div>
+<div class="sidebar-card">
+<h3>Free Financial Tools</h3>
+<p>More calculators to help you make smarter money decisions.</p>
+<div class="sidebar-offer-item">
+<div class="offer-name">Personal Loan Calculator</div>
+<div class="offer-desc">Monthly payment &amp; amortization</div>
+<a class="btn-offer" href="calculator-personal-loan.html">Open Tool →</a>
+</div>
+<div class="sidebar-offer-item">
+<div class="offer-name">Debt-to-Income Calculator</div>
+<div class="offer-desc">Check your lender eligibility</div>
+<a class="btn-offer" href="calculator-debt-to-income.html">Open Tool →</a>
+</div>
+<div class="sidebar-offer-item">
+<div class="offer-name">APR Calculator</div>
+<div class="offer-desc">True cost including all fees</div>
+<a class="btn-offer" href="calculator-apr.html">Open Tool →</a>
+</div>
+</div>
+</div>
+</div>
+</main></div>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a hard inquiry affect my credit score?","acceptedAnswer":{"@type":"Answer","text":"A single hard inquiry typically reduces your score by 5-10 points and remains on your report for 2 years."}},
+{"@type":"Question","name":"What is the fastest way to improve my credit score?","acceptedAnswer":{"@type":"Answer","text":"Reduce credit utilization below 30% (improves within 30 days) and dispute errors on your credit report."}},
+{"@type":"Question","name":"Does checking my own credit score hurt it?","acceptedAnswer":{"@type":"Answer","text":"No. Checking your own score is a soft inquiry with zero impact on your FICO score."}},
+{"@type":"Question","name":"How long do negative items stay on my credit report?","acceptedAnswer":{"@type":"Answer","text":"Late payments: 7 years. Collections: 7 years. Chapter 7 bankruptcy: 10 years. Hard inquiries: 2 years."}},
+{"@type":"Question","name":"How quickly does my score recover after a hard inquiry?","acceptedAnswer":{"@type":"Answer","text":"Most borrowers recover to pre-inquiry levels within 3-6 months."}}]}</script>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Credit Score Impact Calculator",
+  "description":"Model how credit actions affect your FICO score before you make them.",
+  "url":"https://wiseiq.net/pages/calculator-credit-score-impact.html",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "author":{"@type":"Organization","name":"WiseIQ","url":"https://wiseiq.net"},
+  "publisher":{"@type":"Organization","name":"WiseIQ","url":"https://wiseiq.net","logo":{"@type":"ImageObject","url":"https://wiseiq.net/assets/logo.png"}}
+}</script>
+<script>
+const impacts = {
+  hard_inquiry: { low: -10, high: -5, label: '-5 to -10 pts', explanation: 'A hard inquiry from a loan or credit card application typically reduces your score by 5–10 points. The impact is temporary — most scores recover within 3–6 months. Multiple inquiries for the same loan type within 14–45 days count as one inquiry.' },
+  new_account: { low: -15, high: -5, label: '-5 to -15 pts', explanation: 'Opening a new account triggers a hard inquiry (-5 to -10 pts) and reduces your average account age (-5 pts). However, if approved, the new credit limit can reduce your overall utilization, which may partially offset the impact within 1–2 months.' },
+  payoff_card: { low: 10, high: 40, label: '+10 to +40 pts', explanation: 'Paying off a credit card reduces your utilization ratio — the most impactful short-term action you can take. If the card had a high balance, paying it to zero can improve your score by 20–40 points within one billing cycle. The exact impact depends on how much your overall utilization changes.' },
+  late_30: { low: -60, high: -30, label: '-30 to -60 pts', explanation: 'A 30-day late payment is one of the most damaging credit events. The impact is larger for borrowers with higher scores — someone with a 780 score may drop 90–110 points, while someone with a 620 score may drop 60–80 points. The impact diminishes over time but stays on your report for 7 years.' },
+  late_60: { low: -80, high: -50, label: '-50 to -80 pts', explanation: 'A 60-day late payment is more damaging than a 30-day late. The longer the delinquency, the more severe the impact. Contact your lender immediately — many will work out a payment plan to prevent further damage. Some lenders offer hardship programs that may prevent the late payment from being reported.' },
+  late_90: { low: -110, high: -70, label: '-70 to -110 pts', explanation: 'A 90+ day late payment is severely damaging and may result in the account being sent to collections, which causes additional damage. Recovery from a 90-day late typically takes 2–3 years of consistent on-time payments.' },
+  util_down: { low: 15, high: 40, label: '+15 to +40 pts', explanation: 'Reducing your credit utilization by 20 percentage points (e.g., from 50% to 30%) can improve your score by 15–40 points. This is the fastest way to improve your score — the change is reflected within one billing cycle. Aim to keep utilization below 30%, ideally below 10% for maximum benefit.' },
+  util_up: { low: -30, high: -10, label: '-10 to -30 pts', explanation: 'Increasing your credit utilization by 20 percentage points (e.g., from 10% to 30%) can reduce your score by 10–30 points. Utilization above 30% starts to significantly impact your score; above 50% causes severe damage. Pay down balances before applying for new credit.' },
+  collection: { low: -110, high: -50, label: '-50 to -110 pts', explanation: 'A collection account is a major negative event. The impact is larger for borrowers with higher scores. Collections remain on your report for 7 years. Paying off a collection may not immediately improve your score under older FICO models, but FICO 9 and VantageScore 3.0+ ignore paid collections.' },
+  bankruptcy: { low: -200, high: -130, label: '-130 to -200 pts', explanation: 'Bankruptcy causes the most severe credit score damage of any event. Chapter 7 stays on your report for 10 years; Chapter 13 for 7 years. However, many people who file bankruptcy already have very low scores, so the drop may be smaller than expected. Recovery is possible — many people reach 650+ within 3–4 years with responsible credit use.' }
+};
+function calcCS() {
+  const score = parseInt(document.getElementById('cs-score').value);
+  const action = document.getElementById('cs-action').value;
+  const impact = impacts[action];
+  document.getElementById('cs-current-display').textContent = score;
+  document.getElementById('cs-impact').textContent = impact.label;
+  const newLow = Math.max(300, Math.min(850, score + impact.low));
+  const newHigh = Math.max(300, Math.min(850, score + impact.high));
+  if (impact.low === impact.high) {
+    document.getElementById('cs-new-score').textContent = newLow;
+  } else {
+    const lo = Math.min(newLow, newHigh), hi = Math.max(newLow, newHigh);
+    document.getElementById('cs-new-score').textContent = lo + ' – ' + hi;
+  }
+  document.getElementById('cs-explanation').textContent = impact.explanation;
+}
+calcCS();
+</script>
+<script>
+window.addEventListener("load", function() { calcCS(); });
+</script>
+<button aria-label="Back to top" id="back-to-top">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script defer="" src="../js/calc-sliders.js?v=20260721"></script>
+<script defer="" src="../js/rate-alert.js?v=20260721"></script>
+<script data-category="general" defer="True" src="../js/wiq-telemetry.js?v=20260721"></script><script defer="" src="../js/wiq-instant-calc.js?v=20260721"></script><footer class="site-footer"><div class="wrap">
+<div class="foot-grid">
+<div><div class="foot-brand">Wise<em>IQ</em></div><p class="foot-tag">Honest money help for fair credit. We tell you exactly who pays us — and who doesn't.</p></div>
+<div><div class="foot-h">Personal Loans</div>
+<a href="/pages/bad-credit-personal-loans.html">Bad credit (under 580)</a>
+<a href="/pages/personal-loans-fair-credit.html">Fair credit (580–669)</a>
+<a href="/pages/personal-loans-good-credit.html">Good credit (670+)</a>
+<a href="/pages/guide-personal-loans.html">The complete guide</a></div>
+<div><div class="foot-h">Credit Building</div>
+<a href="/pages/credit-building.html">Credit building hub</a>
+<a href="/pages/guide-dispute-credit-report-errors.html">Dispute report errors</a>
+<a href="/pages/guide-remove-hard-inquiries.html">Remove hard inquiries</a>
+<a href="/pages/credit-score-simulator.html">Score simulator</a></div>
+<div><div class="foot-h">Tools</div>
+<a href="/pages/calculator-credit-card-payoff.html">Card payoff calculator</a>
+<a href="/pages/calculator-personal-loan.html">Loan calculator</a>
+<a href="/pages/calculator-debt-to-income.html">DTI calculator</a>
+<a href="/pages/resources.html">All guides &amp; tools</a></div>
+<div><div class="foot-h">Company</div>
+<a href="/pages/about.html">About</a>
+<a href="/pages/how-we-rank.html">How we rank</a>
+<a href="/pages/advertise.html">Advertiser disclosure</a>
+<a href="/pages/privacy.html">Privacy</a>
+<a href="/pages/terms.html">Terms</a></div>
+</div>
+<div class="foot-legal">© 2026 WiseIQ · WiseIQ is not a lender and does not make credit decisions. Rates and terms shown are set by lenders and subject to change. Not financial advice.</div>
+</div></footer>
+<script src="/js/page-extras.js?v=20260721" defer></script>
+<script src="/js/wiq-outbound.js?v=20260721" defer></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow utility/admin pages that waste crawl budget
+Disallow: /pages/thank-you.html
+Disallow: /pages/404.html
+
+# Allow all bots to access CSS and JS for rendering
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Sitemap location
+Sitemap: https://wiseiq.net/sitemap.xml
+
+# Crawl-delay for aggressive bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 30

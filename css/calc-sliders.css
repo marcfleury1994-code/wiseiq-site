@@ -1,0 +1,178 @@
+/* ============================================================
+   WiseIQ Calculator Slider System
+   Paired number input + range slider for all calculators
+   ============================================================ */
+
+/* Override calc-input-wrap to allow slider to flow below */
+.calc-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Row containing prefix + number input (existing layout) */
+.calc-input-wrap.has-prefix {
+  flex-direction: column;
+}
+
+/* The range slider sits below the input row, full width */
+.calc-input-wrap input[type="range"],
+.calc-input-wrap .calc-slider-range-labels {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calc-input-wrap input[type="range"] {
+  margin-top: 8px;
+}
+
+.calc-input-wrap .calc-slider-range-labels {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* Slider wrapper — replaces plain number input */
+.calc-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.calc-field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* The number input — compact, right-aligned value display */
+.calc-field-row input[type="number"] {
+  width: 96px;
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.15s;
+  -moz-appearance: textfield;
+}
+.calc-field-row input[type="number"]:focus {
+  border-color: #00b894;
+  background: #fff;
+}
+.calc-field-row input[type="number"]::-webkit-inner-spin-button,
+.calc-field-row input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Range slider — full width, custom styled */
+.calc-field-row input[type="range"] {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #00b894 var(--pct, 30%), #e2e8f0 var(--pct, 30%));
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+/* Thumb — WebKit */
+.calc-field-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00b894;
+  border: 2.5px solid #fff;
+  box-shadow: 0 1px 4px rgba(10,126,164,0.35);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.calc-field-row input[type="range"]::-webkit-slider-thumb:hover,
+.calc-field-row input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.18);
+  box-shadow: 0 2px 8px rgba(10,126,164,0.45);
+}
+
+/* Thumb — Firefox */
+.calc-field-row input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00b894;
+  border: 2.5px solid #fff;
+  box-shadow: 0 1px 4px rgba(10,126,164,0.35);
+  cursor: pointer;
+}
+
+/* Track — Firefox */
+.calc-field-row input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+.calc-field-row input[type="range"]::-moz-range-progress {
+  background: #00b894;
+  border-radius: 4px;
+}
+
+/* Unit prefix/suffix labels */
+.calc-field-unit {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  min-width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Range label row — min/max hints */
+.calc-slider-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #94a3b8;
+  padding: 0 2px;
+  margin-top: -2px;
+}
+
+/* Tooltip on hover */
+.calc-field-row input[type="range"]:hover + .calc-slider-tooltip,
+.calc-field-row input[type="range"]:focus + .calc-slider-tooltip {
+  opacity: 1;
+}
+
+/* ============================================================
+   Mobile: stack slider below number input on small screens
+   ============================================================ */
+@media (max-width: 480px) {
+  .calc-field-row {
+    flex-wrap: wrap;
+  }
+  .calc-field-row input[type="number"] {
+    width: 80px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
+   Print: hide sliders, show only number inputs
+   ============================================================ */
+@media print {
+  .calc-field-row input[type="range"],
+  .calc-slider-range-labels {
+    display: none !important;
+  }
+  .calc-field-row input[type="number"] {
+    width: auto;
+    border: 1px solid #ccc;
+  }
+}

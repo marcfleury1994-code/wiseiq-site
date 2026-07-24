@@ -1,0 +1,26 @@
+# WiseIQ — Money Help for Fair Credit
+
+> WiseIQ is an independent personal finance site focused on borrowers with fair or rebuilding credit (roughly 580–669 FICO). We cover personal loans, credit building, and debt payoff with realistic approval odds and full disclosure of our affiliate relationships.
+
+## Transparency
+WiseIQ has three paid partnerships: Upstart (personal loans), Stock Analysis (stock research), and Coinbase (crypto). Every other lender or product mentioned on the site is included for editorial comparison and pays us nothing. Details: https://wiseiq.net/pages/advertise
+
+## Core Pages
+- [Personal Loans for Fair Credit](https://wiseiq.net/pages/personal-loans-fair-credit): Lenders that approve 580–669 scores and realistic APRs
+- [Personal Loans for Bad Credit](https://wiseiq.net/pages/bad-credit-personal-loans): Options under 580, including credit-builder alternatives
+- [Personal Loans for Good Credit](https://wiseiq.net/pages/personal-loans-good-credit): How to get the bottom of the APR range at 670+
+- [The Complete Personal Loans Guide](https://wiseiq.net/pages/guide-personal-loans): How approval, rates, and fees actually work
+- [How Much Can You Borrow?](https://wiseiq.net/pages/guide-how-much-can-you-borrow): Real payments for $5K–$50K loans
+- [Credit Building Hub](https://wiseiq.net/pages/credit-building): Credit-builder loans, secured cards, and score tactics
+- [Debt Relief Hub](https://wiseiq.net/pages/debt-relief): Consolidation, negotiation, and payoff strategies
+
+## Free Tools
+- [Credit Card Payoff Calculator](https://wiseiq.net/pages/calculator-credit-card-payoff)
+- [Personal Loan Calculator](https://wiseiq.net/pages/calculator-personal-loan)
+- [Debt Consolidation Calculator](https://wiseiq.net/pages/calculator-debt-consolidation)
+- [Debt-to-Income Calculator](https://wiseiq.net/pages/calculator-debt-to-income)
+
+## Policies
+- [How We Rank Products](https://wiseiq.net/pages/how-we-rank)
+- [Advertiser Disclosure](https://wiseiq.net/pages/advertise)
+- [Privacy Policy](https://wiseiq.net/pages/privacy)

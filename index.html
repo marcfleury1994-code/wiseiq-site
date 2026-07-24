@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiseIQ — Money Help for Fair Credit</title>
+<meta name="description" content="Honest loan, credit-building, and debt help for 580–669 credit scores. Real approval odds, real rates, no fake urgency — and we tell you exactly who pays us.">
+<link rel="canonical" href="https://wiseiq.net/">
+<meta property="og:title" content="WiseIQ — Money Help for Fair Credit">
+<meta property="og:description" content="Real approval odds and honest guidance for fair-credit borrowers. We tell you exactly who pays us.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wiseiq.net/">
+<meta property="og:image" content="https://wiseiq.net/assets/og-image.jpg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TM2341EPGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TM2341EPGP');</script>
+<link href="/css/site.min.css?v=20260721" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A; --navy2:#132B4D; --blue:#1A6FD4; --sky:#7FB5F0; --green:#16A34A; --green2:#15803D;
+  --amber:#F59E0B; --red:#EF4444; --ink:#0F172A; --slate:#475569; --slate-l:#64748B; --line:#E2E8F0; --bg:#F8FAFC;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--blue);text-decoration:none;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+.btn{display:inline-block;font-weight:700;border-radius:10px;text-align:center;transition:transform .15s,background .15s,box-shadow .15s;cursor:pointer;}
+.btn-primary{background:var(--green);color:#fff;font-size:16px;padding:15px 28px;box-shadow:0 4px 14px rgba(22,163,74,.3);}
+.btn-primary:hover{background:var(--green2);transform:translateY(-1px);}
+.kicker{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:#EFF6FF;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+h2.sec{font-size:clamp(23px,3vw,32px);font-weight:800;letter-spacing:-.02em;color:var(--navy);margin-bottom:10px;}
+p.sec-sub{font-size:16px;color:var(--slate);max-width:640px;margin-bottom:34px;}
+section{padding:68px 0;}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes growBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.rise{animation:rise .6s ease both;}
+.rise2{animation:rise .6s ease .15s both;}
+.rise3{animation:rise .6s ease .3s both;}
+
+/* NAV */
+.topnav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+.topnav-in{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:28px;height:64px;}
+.brand{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.02em;}
+.brand em{font-style:normal;color:var(--green);}
+.navlinks{display:flex;gap:22px;margin-left:auto;}
+.navlinks a{font-size:14.5px;font-weight:600;color:var(--slate);padding:6px 2px;}
+.navlinks a:hover{color:var(--navy);}
+.nav-cta{background:var(--green);color:#fff;font-size:13.5px;font-weight:700;padding:9px 18px;border-radius:8px;white-space:nowrap;}
+.nav-cta:hover{background:var(--green2);}
+.nav-toggle{display:none;}
+.nav-burger{display:none;cursor:pointer;padding:10px;margin-left:auto;border:0;background:none;}
+.nav-burger span{display:block;width:22px;height:2.5px;background:var(--navy);border-radius:2px;margin:4.5px 0;}
+.mobile-menu{display:none;}
+@media(max-width:900px){
+  .navlinks{display:none;}
+  .nav-burger{display:block;}
+  .nav-toggle:checked ~ .mobile-menu{display:block;}
+  .mobile-menu{background:#fff;border-bottom:1px solid var(--line);padding:6px 24px 18px;}
+  .mobile-menu a{display:block;font-size:16px;font-weight:600;color:var(--navy);padding:12px 0;border-bottom:1px solid #F1F5F9;}
+  .mobile-menu a:last-child{border-bottom:none;}
+  .mobile-menu .mm-cta{color:var(--green);font-weight:800;}
+}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#081627 0%,var(--navy) 45%,#17345E 100%);color:#fff;padding:80px 0 72px;}
+.hero::before{content:"";position:absolute;top:-180px;right:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(26,111,212,.35),transparent 65%);}
+.hero::after{content:"";position:absolute;bottom:-220px;left:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,.22),transparent 65%);}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+.hero h1{font-size:clamp(30px,4.2vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.12;}
+.hero h1 .accent{color:#4ADE80;}
+.hero .sub{font-size:17.5px;color:rgba(255,255,255,.78);max-width:540px;margin:18px 0 30px;}
+.hero .sub strong{color:#fff;}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.path{background:rgba(255,255,255,.06);backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 18px 16px;color:#fff;transition:all .15s;}
+.path:hover{background:rgba(255,255,255,.13);border-color:#4ADE80;transform:translateY(-3px);}
+.path .r{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--sky);text-transform:uppercase;}
+.path .t{font-size:16.5px;font-weight:800;margin:4px 0 3px;}
+.path .d{font-size:12.5px;color:rgba(255,255,255,.62);line-height:1.5;}
+.path .arrow{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:#4ADE80;}
+.hero-note{margin-top:24px;font-size:13px;color:rgba(255,255,255,.5);}
+.hero-note a{color:rgba(255,255,255,.85);text-decoration:underline;}
+
+/* HERO CHART CARD */
+.rate-card{background:rgba(255,255,255,.055);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.rate-card .rc-title{font-size:16px;font-weight:800;color:#fff;}
+.rate-card .rc-sub{font-size:12.5px;color:rgba(255,255,255,.55);margin-bottom:22px;}
+.rc-row{display:grid;grid-template-columns:92px 1fr 74px;align-items:center;gap:10px;margin-bottom:14px;}
+.rc-label{font-size:12.5px;font-weight:700;color:#fff;text-align:right;line-height:1.25;}
+.rc-label small{display:block;font-weight:600;color:rgba(255,255,255,.45);font-size:10.5px;}
+.rc-track{background:rgba(255,255,255,.09);border-radius:7px;height:24px;position:relative;overflow:hidden;}
+.rc-fill{position:absolute;top:0;bottom:0;border-radius:7px;transform-origin:left;animation:growBar .9s cubic-bezier(.2,.7,.3,1) .3s both;}
+.rc-fill.g{background:linear-gradient(90deg,#22C55E,#16A34A);}
+.rc-fill.b{background:linear-gradient(90deg,#60A5FA,#1A6FD4);}
+.rc-fill.a{background:linear-gradient(90deg,#FBBF24,#F59E0B);}
+.rc-fill.r{background:linear-gradient(90deg,#F87171,#EF4444);}
+.rc-val{font-size:12.5px;font-weight:800;color:#fff;white-space:nowrap;}
+.rc-foot{font-size:11.5px;color:rgba(255,255,255,.5);margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);line-height:1.55;}
+.rc-foot a{color:#4ADE80;font-weight:700;}
+.rc-badge{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#0B1F3A;background:#4ADE80;border-radius:5px;padding:2px 8px;margin-bottom:12px;}
+
+/* STATS BAND */
+.stats-band{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:22px 0;}
+.stats-band .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.stat{text-align:center;color:#fff;}
+.stat strong{display:block;font-size:24px;font-weight:800;letter-spacing:-.02em;color:#4ADE80;}
+.stat span{font-size:12px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+
+/* OFFER */
+.offer-band{background:var(--bg);border-bottom:1px solid var(--line);}
+.offer-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 40px rgba(11,31,58,.09);padding:36px;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;position:relative;overflow:hidden;}
+.offer-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--blue));}
+.offer-logo{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.offer-logo img{height:40px;width:auto;border-radius:8px;background:#fff;}
+.offer-card h3{font-size:23px;font-weight:800;color:var(--navy);letter-spacing:-.02em;}
+.offer-card .lender{font-size:12.5px;color:var(--slate-l);}
+.offer-stats{display:flex;gap:26px;margin:16px 0 18px;flex-wrap:wrap;}
+.offer-stats div strong{display:block;font-size:21px;font-weight:800;color:var(--navy);}
+.offer-stats div span{font-size:11.5px;color:var(--slate-l);}
+.plus,.minus{font-size:14px;color:var(--slate);padding-left:24px;position:relative;margin-bottom:7px;}
+.plus::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
+.minus::before{content:"—";position:absolute;left:0;color:var(--amber);font-weight:800;}
+.offer-side{border-left:1px solid var(--line);padding-left:36px;}
+.offer-side .why{font-size:13px;color:var(--slate);margin:14px 0 0;line-height:1.65;}
+.tag-partner{display:inline-block;font-size:11px;font-weight:700;color:#92600A;background:#FEF3C7;border-radius:6px;padding:3px 9px;margin-bottom:12px;}
+
+/* GRID CARDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;transition:all .15s;display:block;position:relative;}
+.card:hover{box-shadow:0 10px 30px rgba(11,31,58,.1);transform:translateY(-3px);border-color:#CBD5E1;}
+.card h4{font-size:16.5px;font-weight:800;color:var(--navy);margin:12px 0 6px;}
+.card p{font-size:13.5px;color:var(--slate);line-height:1.6;}
+.card .go{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--blue);}
+.card .chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--slate-l);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;}
+.icon-bubble{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;}
+.icon-bubble svg{width:22px;height:22px;}
+.ib-green{background:#F0FDF4;color:var(--green);}
+.ib-blue{background:#EFF6FF;color:var(--blue);}
+.ib-amber{background:#FFFBEB;color:var(--amber);}
+.ib-navy{background:#F1F5F9;color:var(--navy);}
+
+/* PRODUCTS */
+.prod-band{background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.prod{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;transition:all .15s;}
+.prod:hover{box-shadow:0 10px 30px rgba(11,31,58,.1);transform:translateY(-3px);}
+.prod .p-tag{font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.prod h4{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+.prod p{font-size:13.5px;color:var(--slate);line-height:1.6;flex:1;}
+.prod .p-row{display:flex;align-items:center;justify-content:space-between;margin-top:16px;}
+.prod .p-price{font-size:22px;font-weight:800;color:var(--navy);}
+.prod .p-go{font-size:13px;font-weight:700;color:#fff;background:var(--navy);border-radius:8px;padding:9px 16px;transition:background .15s;}
+.prod .p-go:hover{background:var(--blue);}
+
+/* HONEST */
+.honest{background:linear-gradient(160deg,#081627,var(--navy));color:#fff;position:relative;overflow:hidden;}
+.honest::before{content:"";position:absolute;top:-160px;right:-100px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,.18),transparent 65%);}
+.honest .wrap{position:relative;z-index:2;}
+.honest h2{color:#fff;}
+.honest > .wrap > p{color:rgba(255,255,255,.72);}
+.money-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;}
+.money-cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:24px;}
+.money-cell .who{font-size:16px;font-weight:800;margin-bottom:5px;color:#fff;}
+.money-cell .what{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6;}
+.money-cell .what a{color:var(--sky);}
+.money-none{margin-top:24px;font-size:14px;color:rgba(255,255,255,.75);border-left:3px solid var(--green);padding-left:16px;line-height:1.7;}
+.money-none a{color:#4ADE80;font-weight:700;}
+
+/* FOOT CTA */
+.foot-cta{text-align:center;background:var(--bg);border-top:1px solid var(--line);}
+.foot-cta h2{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:8px;}
+.foot-cta p{color:var(--slate);margin-bottom:26px;}
+
+/* FOOTER */
+.site-footer{background:var(--navy);color:#fff;padding:52px 0 28px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;}
+.foot-brand{font-size:20px;font-weight:800;letter-spacing:-.02em;}
+.foot-brand em{font-style:normal;color:#4ADE80;}
+.foot-tag{font-size:13px;color:rgba(255,255,255,.6);margin-top:8px;line-height:1.6;max-width:220px;}
+.foot-h{font-size:11.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.site-footer a{display:block;font-size:13.5px;color:rgba(255,255,255,.78);margin-bottom:9px;}
+.site-footer a:hover{color:#fff;}
+.foot-legal{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px;}
+  .paths{grid-template-columns:1fr;}
+  .stats-band .wrap{grid-template-columns:1fr 1fr;row-gap:22px;}
+  .offer-card{grid-template-columns:1fr;}
+  .offer-side{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px;}
+  .grid3,.grid4{grid-template-columns:1fr;}
+  .money-row{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  section{padding:48px 0;}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topnav">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+<div class="topnav-in">
+<a class="brand" href="/"><span>Wise<em>IQ</em></span></a>
+<nav class="navlinks">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a href="/pages/search.html">Search</a>
+</nav>
+<label for="nav-toggle" class="nav-burger"><span></span><span></span><span></span></label>
+<a class="nav-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate</a>
+</div>
+<nav class="mobile-menu">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a href="/pages/search.html">Search</a>
+<a class="mm-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate at Upstart →</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="rise">Money help for fair credit.<br><span class="accent">Nothing fake</span> on this page.</h1>
+      <p class="sub rise2">Most finance sites are built for the 740-club. WiseIQ is built for the <strong>580–669 range</strong> — real approval odds, realistic rates, and guidance that doesn't pretend a rejection can't happen.</p>
+      <div class="paths rise2">
+        <a class="path" href="/pages/bad-credit-personal-loans.html">
+          <div class="r">Score under 580</div>
+          <div class="t">Rebuilding</div>
+          <div class="d">Loans that consider you, plus faster credit-builder routes</div>
+          <span class="arrow">Start here →</span>
+        </a>
+        <a class="path" href="/pages/personal-loans-fair-credit.html">
+          <div class="r">Score 580–669</div>
+          <div class="t">Fair credit</div>
+          <div class="d">Who actually approves you and the APR to expect</div>
+          <span class="arrow">Start here →</span>
+        </a>
+        <a class="path" href="/pages/personal-loans-good-credit.html">
+          <div class="r">Score 670+</div>
+          <div class="t">Good credit</div>
+          <div class="d">You'll be approved — here's how to not overpay</div>
+          <span class="arrow">Start here →</span>
+        </a>
+      </div>
+      <div class="hero-note rise3">No account. No email wall. No credit pull to read anything on this site. <a href="/pages/advertise.html">Here's exactly how we make money.</a></div>
+    </div>
+    <div class="rate-card rise3">
+      <span class="rc-badge">The rates nobody advertises</span>
+      <div class="rc-title">Real personal loan APR by credit tier</div>
+      <div class="rc-sub">2026 market ranges — not the teaser rates in the ads</div>
+      <div class="rc-row"><div class="rc-label">740+<small>Excellent</small></div><div class="rc-track"><div class="rc-fill g" style="left:16%;width:17%"></div></div><div class="rc-val">7–12%</div></div>
+      <div class="rc-row"><div class="rc-label">670–739<small>Good</small></div><div class="rc-track"><div class="rc-fill b" style="left:25%;width:22%"></div></div><div class="rc-val">10–18%</div></div>
+      <div class="rc-row"><div class="rc-label">580–669<small>Fair</small></div><div class="rc-track"><div class="rc-fill a" style="left:48%;width:41%"></div></div><div class="rc-val">18–32%</div></div>
+      <div class="rc-row"><div class="rc-label">Below 580<small>Rebuilding</small></div><div class="rc-track"><div class="rc-fill r" style="left:68%;width:32%"></div></div><div class="rc-val">25–36%</div></div>
+      <div class="rc-foot">Scale 0–36% APR. National average ~12% (Federal Reserve G.19). Your rate depends on income and DTI, not just score — <a href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">see your real rate in 2 minutes →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="wrap">
+    <div class="stat"><strong>310+</strong><span>Honest guides &amp; reviews</span></div>
+    <div class="stat"><strong>18</strong><span>Lenders compared</span></div>
+    <div class="stat"><strong>14</strong><span>Free calculators &amp; tools</span></div>
+    <div class="stat"><strong>3</strong><span>Paid partners — all disclosed</span></div>
+  </div>
+</div>
+
+<!-- FEATURED OFFER -->
+<section class="offer-band">
+  <div class="wrap">
+    <span class="kicker">Our loan partner</span>
+    <h2 class="sec">One lender pays us. Here's the honest case for them.</h2>
+    <p class="sec-sub">Upstart is WiseIQ's only lending partner. We recommend them because their model genuinely favors fair-credit and thin-file borrowers — and we tell you when they're the wrong choice, too.</p>
+    <div class="offer-card">
+      <div>
+        <div class="offer-logo"><img src="assets/products/upstart_logo.png" alt="Upstart" width="120" height="40"><div><h3>Upstart Personal Loans</h3><div class="lender">Upstart Network · loans issued via partner banks</div></div></div>
+        <div class="offer-stats">
+          <div><strong>None</strong><span>Min. credit score</span></div>
+          <div><strong>6.2–35.99%</strong><span>APR range</span></div>
+          <div><strong>$1K–$75K</strong><span>Loan amounts</span></div>
+          <div><strong>~1 day</strong><span>Fastest funding</span></div>
+        </div>
+        <div class="plus">Soft credit check to see your rate — your score is untouched</div>
+        <div class="plus">AI underwriting weighs education &amp; employment, not just FICO</div>
+        <div class="plus">No prepayment penalty</div>
+        <div class="minus">Origination fee can reach 15% at the lowest credit tiers — check your quote</div>
+        <div class="minus">If your score is 700+, a no-fee lender may beat them — compare first</div>
+      </div>
+      <div class="offer-side">
+        <span class="tag-partner">Paid partner — we earn if you apply</span>
+        <a class="btn btn-primary" style="display:block;" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate — 2 min, soft pull →</a>
+        <p class="why">Checking your rate shows real numbers for your profile and does not affect your credit score. You're never obligated to accept.</p>
+        <a href="/pages/blog-is-upstart-legit.html" style="font-size:13px;font-weight:700;display:inline-block;margin-top:14px;">Read our full Upstart review →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RATE EXPLORER -->
+<section style="padding-bottom:0;">
+  <div class="wrap">
+    <span class="kicker">Try it — no email, ever</span>
+    <h2 class="sec">The loan math other sites make you sign up for</h2>
+    <p class="sec-sub">Move the sliders. Realistic APR and payment for your profile, instantly. <a href="/pages/rate-explorer.html" style="font-weight:700;">Open the full explorer →</a></p>
+    <div class="wiq-rx" data-compact><noscript>This tool needs JavaScript — or <a href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener">get your real rate at Upstart</a>.</noscript></div>
+  </div>
+</section>
+
+<!-- START WHERE YOU ARE -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Start where you are</span>
+    <h2 class="sec">Three problems. Three honest playbooks.</h2>
+    <p class="sec-sub">Everything on this site funnels into one of these — pick yours.</p>
+    <div class="grid3">
+      <a class="card" href="/pages/guide-personal-loans.html">
+        <div class="icon-bubble ib-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></div>
+        <h4>Get a loan without getting burned</h4>
+        <p>How approval actually works, what your score really gets you, and the fee traps to refuse — before you touch any application.</p>
+        <span class="go">The complete loans guide →</span>
+      </a>
+      <a class="card" href="/pages/credit-building.html">
+        <div class="icon-bubble ib-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg></div>
+        <h4>Raise your score on purpose</h4>
+        <p>Credit-builder loans, secured cards, utilization tactics, and dispute rights — the sequence that moves a 590 to a 670.</p>
+        <span class="go">Credit building hub →</span>
+      </a>
+      <a class="card" href="/pages/debt-relief.html">
+        <div class="icon-bubble ib-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h4>Get out from under debt</h4>
+        <p>Snowball vs. avalanche, consolidation math, collector negotiation scripts, and when settlement is (and isn't) worth it.</p>
+        <span class="go">Debt relief hub →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATORS -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <span class="kicker">Free tools</span>
+    <h2 class="sec">Run your own numbers</h2>
+    <p class="sec-sub">No sign-up, no email, no credit pull. Just math.</p>
+    <div class="grid4">
+      <a class="card" href="/pages/calculator-credit-card-payoff.html">
+        <div class="icon-bubble ib-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h4>Card Payoff</h4><p>Your debt-free date and total interest at your real APR.</p><span class="go">Calculate →</span>
+      </a>
+      <a class="card" href="/pages/calculator-personal-loan.html">
+        <div class="icon-bubble ib-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg></div>
+        <h4>Loan Payment</h4><p>Monthly payment and total cost before you apply.</p><span class="go">Calculate →</span>
+      </a>
+      <a class="card" href="/pages/calculator-debt-consolidation.html">
+        <div class="icon-bubble ib-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4a2 2 0 01-2 2H2M16 3v4a2 2 0 002 2h4M12 12v9M8 21h8"/></svg></div>
+        <h4>Consolidation</h4><p>Whether one loan actually saves you money.</p><span class="go">Calculate →</span>
+      </a>
+      <a class="card" href="/pages/calculator-debt-to-income.html">
+        <div class="icon-bubble ib-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/></svg></div>
+        <h4>DTI Ratio</h4><p>The number lenders check before your score.</p><span class="go">Calculate →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="prod-band">
+  <div class="wrap">
+    <span class="kicker">WiseIQ originals</span>
+    <h2 class="sec">Action kits, not just advice</h2>
+    <p class="sec-sub">Step-by-step PDF systems we built and sell directly — no lender involved, 30-day guarantee.</p>
+    <div class="grid3">
+      <div class="prod">
+        <div class="p-tag">Best Seller · PDF Kit</div>
+        <h4>Credit Repair Action Kit</h4>
+        <p>The 90-day plan: 5 ready-to-send dispute letters, a score tracker, and week-by-week actions to clean your report yourself.</p>
+        <div class="p-row"><span class="p-price">$17</span><a class="p-go" href="/pages/credit-repair-action-kit.html">View kit →</a></div>
+      </div>
+      <div class="prod">
+        <div class="p-tag">PDF Planner</div>
+        <h4>Debt Freedom Planner</h4>
+        <p>Snowball &amp; avalanche worksheets, a zero-based budget template, and a 12-month net-worth tracker in one system.</p>
+        <div class="p-row"><span class="p-price">$17</span><a class="p-go" href="/pages/debt-freedom-planner.html">View planner →</a></div>
+      </div>
+      <div class="prod">
+        <div class="p-tag">Quick Win · PDF</div>
+        <h4>Credit Score Boost Cheat Sheet</h4>
+        <p>The 7 highest-impact actions ranked by point gain and speed — the fastest path to a better score, on one sheet.</p>
+        <div class="p-row"><span class="p-price">$9</span><a class="p-go" href="/pages/credit-score-boost-cheat-sheet.html">View sheet →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Most useful guides</span>
+    <h2 class="sec">Read before you apply</h2>
+    <div class="grid3">
+      <a class="card" href="/pages/personal-loans-fair-credit.html"><span class="chip">Fair credit</span><h4>Best Personal Loans for Fair Credit</h4><p>Realistic APRs for 580–669 and the pre-qualification strategy that protects your score.</p><span class="go">Read guide →</span></a>
+      <a class="card" href="/pages/guide-dispute-credit-report-errors.html"><span class="chip">Credit repair</span><h4>Dispute Credit Report Errors Yourself</h4><p>The exact letters and legal rights — no $99/month repair company required.</p><span class="go">Read guide →</span></a>
+      <a class="card" href="/pages/guide-how-much-can-you-borrow.html"><span class="chip">Borrowing</span><h4>How Much Can You Actually Borrow?</h4><p>Real payments from $5K to $50K, and how lenders set your ceiling with DTI.</p><span class="go">Read guide →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE MAKE MONEY -->
+<section class="honest">
+  <div class="wrap">
+    <span class="kicker" style="background:rgba(255,255,255,.1);color:#7FB5F0;">Radical transparency</span>
+    <h2 class="sec">Exactly who pays us</h2>
+    <p style="max-width:620px;">Most comparison sites bury this. We think showing it is the whole point. WiseIQ has three paid relationships — that's it.</p>
+    <div class="money-row">
+      <div class="money-cell">
+        <div class="who">Upstart</div>
+        <div class="what">Personal loans. We earn a commission when you check your rate and take a loan. This is our main revenue source. <a href="/pages/upstart-application-walkthrough.html" style="color:#7FB5F0;">Our application walkthrough →</a></div>
+      </div>
+      <div class="money-cell">
+        <div class="who">Stock Analysis</div>
+        <div class="what">A stock research tool we use ourselves. We earn a commission on subscriptions — code <strong style="color:#fff;">WISEIQ</strong> gets you 10% off. <a href="https://stockanalysis.com/pro/?ref=marc" rel="sponsored noopener" target="_blank">Their site →</a></div>
+      </div>
+      <div class="money-cell">
+        <div class="who">Coinbase</div>
+        <div class="what">Crypto exchange. We earn if you sign up. Crypto is volatile and optional — nothing on this site suggests you need it. <a href="https://coinbase-consumer.sjv.io/2RV59O" rel="sponsored noopener" target="_blank">Their site →</a></div>
+      </div>
+    </div>
+    <div class="money-none">Every other bank, lender, and card on this site pays us <strong>nothing</strong>. When we compare Upstart to SoFi or Discover, the others aren't paying for placement — which is why we can tell you when they're the better pick. <a href="/pages/how-we-rank.html">How we rank products →</a></div>
+  </div>
+</section>
+
+<!-- FOOT CTA -->
+<section class="foot-cta">
+  <div class="wrap">
+    <h2>Know where you stand in 2 minutes</h2>
+    <p>Soft credit pull. Real numbers for your profile. No obligation.</p>
+    <a class="btn btn-primary" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate at Upstart →</a>
+    <p style="margin-top:14px;font-size:12.5px;color:var(--slate-l);">Paid partner link · <a href="/pages/advertise.html">Advertiser disclosure</a> · Not financial advice — review full terms before applying.</p>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="wrap">
+<div class="foot-grid">
+<div><div class="foot-brand">Wise<em>IQ</em></div><p class="foot-tag">Honest money help for fair credit. We tell you exactly who pays us — and who doesn't.</p></div>
+<div><div class="foot-h">Personal Loans</div>
+<a href="/pages/bad-credit-personal-loans.html">Bad credit (under 580)</a>
+<a href="/pages/personal-loans-fair-credit.html">Fair credit (580–669)</a>
+<a href="/pages/personal-loans-good-credit.html">Good credit (670+)</a>
+<a href="/pages/guide-personal-loans.html">The complete guide</a></div>
+<div><div class="foot-h">Credit Building</div>
+<a href="/pages/credit-building.html">Credit building hub</a>
+<a href="/pages/guide-dispute-credit-report-errors.html">Dispute report errors</a>
+<a href="/pages/guide-remove-hard-inquiries.html">Remove hard inquiries</a>
+<a href="/pages/credit-score-simulator.html">Score simulator</a></div>
+<div><div class="foot-h">Tools</div>
+<a href="/pages/calculator-credit-card-payoff.html">Card payoff calculator</a>
+<a href="/pages/calculator-personal-loan.html">Loan calculator</a>
+<a href="/pages/calculator-debt-to-income.html">DTI calculator</a>
+<a href="/pages/resources.html">All guides &amp; tools</a></div>
+<div><div class="foot-h">Company</div>
+<a href="/pages/about.html">About</a>
+<a href="/pages/how-we-rank.html">How we rank</a>
+<a href="/pages/advertise.html">Advertiser disclosure</a>
+<a href="/pages/privacy.html">Privacy</a>
+<a href="/pages/terms.html">Terms</a></div>
+</div>
+<div class="foot-legal">© 2026 WiseIQ · WiseIQ is not a lender and does not make credit decisions. Rates and terms shown are set by lenders and subject to change. Not financial advice.</div>
+</div></footer>
+
+<script src="/js/rate-explorer.js?v=20260721" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"WiseIQ","url":"https://wiseiq.net/","description":"Honest loan, credit-building, and debt help for fair-credit borrowers."}
+</script>
+<script src="/js/wiq-outbound.js?v=20260721" defer></script>
+</body>
+</html>

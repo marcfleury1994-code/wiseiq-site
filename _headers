@@ -1,0 +1,44 @@
+# WiseIQ _headers — Security, Caching & CORS
+# Synced with netlify.toml — both must match to avoid CSP conflicts
+
+/*
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://www.google-analytics.com https://adservice.google.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.mailchimp.com https://*.list-manage.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://api.stlouisfed.org https://api.consumerfinance.gov; worker-src 'none'; frame-src https://www.googletagmanager.com https://td.doubleclick.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.mailchimp.com https://*.list-manage.com;
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Type: text/html; charset=utf-8
+
+/pages/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Type: text/html; charset=utf-8
+
+/css/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+/js/*.js
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+/data/*.json
+  Cache-Control: public, max-age=900, stale-while-revalidate=60
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/xml; charset=utf-8
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable

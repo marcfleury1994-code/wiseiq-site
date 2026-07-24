@@ -1,0 +1,8116 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = false
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Sitemap — prevent Netlify from processing/transforming it
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    X-Robots-Tag = "noindex"
+
+# ── Security & Caching Headers ────────────────────────────────────────────────
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # CSP: added /.netlify/functions/* to connect-src for rate-freshness + telemetry fetches
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://www.google-analytics.com https://adservice.google.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.mailchimp.com https://*.list-manage.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://api.stlouisfed.org https://api.consumerfinance.gov; worker-src 'none'; frame-src https://www.googletagmanager.com https://td.doubleclick.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.mailchimp.com https://*.list-manage.com;"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/pages/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/css/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/js/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=900, stale-while-revalidate=60"
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "application/json; charset=utf-8"
+
+# ── Redirects ─────────────────────────────────────────────────────────────────
+
+# Telemetry function
+
+# Canonical trailing-slash redirect (SEO)
+
+# 404 fallback handled automatically by Netlify (404.html)
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
+
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
+# ── Scheduled Functions ───────────────────────────────────────────────────────
+
+# Rate monitor runs every 15 minutes to keep rates-manifest.json fresh
+[functions."rates-monitor"]
+  schedule = "*/15 * * * *"
+
+# ── AUTO-GENERATED REDIRECTS (mirrors _redirects; toml rules provably execute on this site) ──
+
+# ── Redirects (forced) ─────────────────────────────────────────────────────────
+
+[[redirects]]
+  from = "/t"
+  to = "/.netlify/functions/t"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pages/*/"
+  to = "/pages/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-budgeting-apps-2026"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-budgeting-apps-2026.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-high-yield-savings-2026"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-high-yield-savings-2026.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-high-yield-savings-accounts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-high-yield-savings-accounts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-investment-apps-2026"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-investment-apps-2026.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-investment-apps-beginners"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-investment-apps-beginners.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-private-student-loans"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-private-student-loans.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-savings-account-interest-rates-2026"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-savings-account-interest-rates-2026.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-savings-accounts-kids"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-savings-accounts-kids.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-savings-accounts-self-employed"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-savings-accounts-self-employed.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-student-loans-community-college"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-student-loans-community-college.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-lightstream-review"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-lightstream-review.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-myautoloan-review"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-myautoloan-review.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-northwestern-mutual-review"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-northwestern-mutual-review.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-quickbooks-online-review"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-quickbooks-online-review.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-taxact-review"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-taxact-review.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-bad-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-bad-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-debt-consolidation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-debt-consolidation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-home-improvement"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-home-improvement.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-medical-bills"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/avant-loan-for-medical-bills.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-debt-consolidation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-debt-consolidation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-home-improvement"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-home-improvement.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-medical-bills"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-medical-bills.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-wedding"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/lendingclub-loan-for-wedding.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/marcus-loan-for-debt-consolidation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/marcus-loan-for-debt-consolidation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/marcus-loan-for-home-improvement"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/marcus-loan-for-home-improvement.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/marcus-loan-for-medical-bills"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/marcus-loan-for-medical-bills.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/prosper-loan-for-debt-consolidation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/prosper-loan-for-debt-consolidation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/prosper-loan-for-home-improvement"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/prosper-loan-for-home-improvement.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/prosper-loan-for-medical-bills"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/prosper-loan-for-medical-bills.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-debt-consolidation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-debt-consolidation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-home-improvement"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-home-improvement.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-medical-bills"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-medical-bills.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-moving"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-moving.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-vacation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-vacation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-wedding"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-loan-for-wedding.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upgrade-loan-for-bad-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upgrade-loan-for-bad-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upgrade-loan-for-debt-consolidation"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upgrade-loan-for-debt-consolidation.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upgrade-loan-for-home-improvement"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upgrade-loan-for-home-improvement.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-auto-loan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-auto-loan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-heloc-payment"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-heloc-payment.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-mortgage"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-mortgage.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-savings-goal"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/calculator-savings-goal.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/alternatives-to-heloc"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/alternatives-to-heloc.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/alternatives-to-student-loans"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/alternatives-to-student-loans.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loans"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loans.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/banks-like-varo"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/banks-like-varo.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-bank-in-america"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-bank-in-america.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerages-for-beginners"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerages-for-beginners.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-business-checking-accounts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-business-checking-accounts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-cd-rates"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-cd-rates.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-checking-accounts-no-fees"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-checking-accounts-no-fees.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-checking-accounts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-checking-accounts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-etf-screener"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-etf-screener.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-money-market-accounts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-money-market-accounts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-roth-ira-accounts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-roth-ira-accounts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-account"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-account.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-accounts-kids"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-accounts-kids.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-accounts-seniors"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-accounts-seniors.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-accounts-students"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-accounts-students.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-no-minimum-balance"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-savings-no-minimum-balance.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-stock-research-tools"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-stock-research-tools.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-stock-screener"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-stock-screener.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bnpl-best-buy-now-pay-later-apps"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bnpl-best-buy-now-pay-later-apps.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/checking-accounts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/checking-accounts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/discover-savings-offer-code"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/discover-savings-offer-code.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/fidelity-new-account-bonus"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/fidelity-new-account-bonus.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/financial-news"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/financial-news.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-washington-state"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-washington-state.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/how-much-car-loan-can-i-get"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/how-much-car-loan-can-i-get.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/how-much-mortgage-can-i-afford"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/how-much-mortgage-can-i-afford.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/huntington-high-yield-savings-review"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/huntington-high-yield-savings-review.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/insurance"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/insurance.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/investing"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/investing.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-ally-bank-safe"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-ally-bank-safe.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-marcus-safe"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-marcus-safe.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-sofi-legit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-sofi-legit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-usaa-a-good-bank"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/is-usaa-a-good-bank.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgages"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgages.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/online-banking-like-chime"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/online-banking-like-chime.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/research"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/research.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-acorns"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-acorns.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-affirm-app"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-affirm-app.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-afterpay-app"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-afterpay-app.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-ally-savings-account"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-ally-savings-account.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-amex-gold-card"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-amex-gold-card.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-bank-of-america-customized-cash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-bank-of-america-customized-cash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-capital-one-venture-x"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-capital-one-venture-x.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-chase-freedom-flex"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-chase-freedom-flex.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-chase-freedom-unlimited"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-chase-freedom-unlimited.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-cit-savings-account"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-cit-savings-account.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-citi-double-cash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-citi-double-cash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-coinbase"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-coinbase.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-etrade"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-etrade.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-fidelity"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-fidelity.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-klarna-app"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-klarna-app.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-marcus-savings-account"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-marcus-savings-account.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-robinhood"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-robinhood.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-schwab"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-schwab.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-sezzle-app"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-sezzle-app.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-sofi-invest"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-sofi-invest.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-stock-analysis"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-stock-analysis.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-vanguard"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-vanguard.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-webull"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-webull.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-wells-fargo-active-cash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/review-wells-fargo-active-cash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-account-interest-rates"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-account-interest-rates.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-account-rates-comparison"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-account-rates-comparison.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/va-loan-requirements"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/va-loan-requirements.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-avant-vs-onemain-financial"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-avant-vs-onemain-financial.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-heloc-vs-cash-out-refinance"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-heloc-vs-cash-out-refinance.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-heloc-vs-home-equity-loan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-heloc-vs-home-equity-loan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-robinhood-vs-webull"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-robinhood-vs-webull.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-sofi-vs-lightstream"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-sofi-vs-lightstream.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/citibank-vs-chase"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/citibank-vs-chase.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-acorns-vs-stash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-acorns-vs-stash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-affirm-vs-afterpay"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-affirm-vs-afterpay.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-affirm-vs-klarna"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-affirm-vs-klarna.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-affirm-vs-paypal-pay-later"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-affirm-vs-paypal-pay-later.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-ally-vs-discover-savings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-ally-vs-discover-savings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-ally-vs-marcus-savings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-ally-vs-marcus-savings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-amex-gold-vs-chase-sapphire-preferred"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-amex-gold-vs-chase-sapphire-preferred.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-amex-platinum-vs-chase-sapphire-reserve"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-amex-platinum-vs-chase-sapphire-reserve.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-avant-vs-netcredit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-avant-vs-netcredit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-avant-vs-upgrade"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-avant-vs-upgrade.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-betterment-vs-wealthfront"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-betterment-vs-wealthfront.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-brokerages"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-brokerages.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-auto-vs-myautoloan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-auto-vs-myautoloan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-venture-vs-chase-sapphire-preferred"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-venture-vs-chase-sapphire-preferred.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-venture-x-vs-amex-platinum"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-venture-x-vs-amex-platinum.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-freedom-flex-vs-freedom-unlimited"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-freedom-flex-vs-freedom-unlimited.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-freedom-unlimited-vs-citi-double-cash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-freedom-unlimited-vs-citi-double-cash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-preferred-vs-amex-gold"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-preferred-vs-amex-gold.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-preferred-vs-capital-one-venture-x"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-preferred-vs-capital-one-venture-x.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-reserve-vs-amex-platinum"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-reserve-vs-amex-platinum.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-vs-capital-one-venture-x"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chase-sapphire-vs-capital-one-venture-x.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chime-vs-current"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chime-vs-current.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chime-vs-varo"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-chime-vs-varo.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-cit-bank-vs-marcus"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-cit-bank-vs-marcus.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-citi-double-cash-vs-chase-freedom-unlimited"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-citi-double-cash-vs-chase-freedom-unlimited.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-discover-it-vs-citi-double-cash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-discover-it-vs-citi-double-cash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-etrade-vs-schwab"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-etrade-vs-schwab.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-fidelity-vs-schwab"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-fidelity-vs-schwab.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-fidelity-vs-vanguard"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-fidelity-vs-vanguard.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-high-yield-savings-vs-money-market"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-high-yield-savings-vs-money-market.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-klarna-vs-afterpay"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-klarna-vs-afterpay.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-klarna-vs-zip"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-klarna-vs-zip.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-lendingclub-vs-prosper"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-lendingclub-vs-prosper.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-lightstream-vs-sofi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-lightstream-vs-sofi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-marcus-vs-ally-high-yield-savings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-marcus-vs-ally-high-yield-savings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-paypal-vs-venmo"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-paypal-vs-venmo.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-robinhood-vs-fidelity"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-robinhood-vs-fidelity.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-robinhood-vs-webull"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-robinhood-vs-webull.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-rocket-mortgage-vs-better"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-rocket-mortgage-vs-better.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-schwab-vs-vanguard"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-schwab-vs-vanguard.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-self-financial-vs-credit-strong"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-self-financial-vs-credit-strong.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sezzle-vs-afterpay"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sezzle-vs-afterpay.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-ally-savings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-ally-savings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-chime"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-chime.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-marcus-savings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-marcus-savings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-marcus"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-marcus.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-robinhood"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-robinhood.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upgrade-vs-lendingclub"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upgrade-vs-lendingclub.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-wealthfront-vs-betterment"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-wealthfront-vs-betterment.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-wells-fargo-active-cash-vs-citi-double-cash"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-wells-fargo-active-cash-vs-citi-double-cash.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/fidelity-vs-interactive-brokers"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/fidelity-vs-interactive-brokers.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-vs-marcus-vs-lightstream"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-vs-marcus-vs-lightstream.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-vs-wealthfront"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/sofi-vs-wealthfront.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/stock-analysis-vs-morningstar"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/stock-analysis-vs-morningstar.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/stock-analysis-vs-seeking-alpha"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/stock-analysis-vs-seeking-alpha.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/wealthfront-vs-fidelity"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/wealthfront-vs-fidelity.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/what-is-a-cd-certificate-of-deposit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/what-is-a-cd-certificate-of-deposit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/what-is-a-heloc"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/what-is-a-heloc.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/what-is-compound-interest"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/what-is-compound-interest.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-401k"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-401k.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-bnpl-risks-and-warnings"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-bnpl-risks-and-warnings.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-etf-investing"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-etf-investing.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-how-does-buy-now-pay-later-work"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-how-does-buy-now-pay-later-work.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-how-much-car-can-i-afford"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-how-much-car-can-i-afford.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-how-to-start-investing"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-how-to-start-investing.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-refinance-auto-loan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-refinance-auto-loan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-roth-ira"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-roth-ira.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-student-loan-refinancing"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-student-loan-refinancing.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-voided-check-example"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-voided-check-example.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/hub-state-guides"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/hub-state-guides.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-580-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-580-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-600-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-600-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-620-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-620-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-640-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-640-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-660-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-660-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-680-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-680-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-700-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-700-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-720-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-720-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-740-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-740-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-760-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-760-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-780-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-780-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-800-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-800-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-debt-consolidation-loans-580-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-debt-consolidation-loans-580-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-debt-consolidation-loans-600-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-debt-consolidation-loans-600-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-debt-consolidation-loans-620-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-debt-consolidation-loans-620-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-580-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-580-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-600-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-600-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-620-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-620-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-640-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-640-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-660-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-660-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-680-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-680-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-700-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-700-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-720-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-720-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-740-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-740-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-760-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-760-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-780-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-780-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-800-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-savings-accounts-800-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-800-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-800-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-580-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-580-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-600-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-600-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-620-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-620-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-640-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-640-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-660-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-660-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-680-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-680-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-700-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-700-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-720-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-720-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-740-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-740-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-760-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-760-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-780-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-780-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-800-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-800-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-580-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-580-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-600-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-600-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-620-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-620-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-640-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-640-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-660-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-660-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-680-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-680-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-700-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-700-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-720-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-720-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-740-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-740-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-760-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-760-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-780-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-780-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-800-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-800-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-580-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-580-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-600-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-600-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-620-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-620-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-640-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-640-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-660-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-660-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-680-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-680-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-700-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-700-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-720-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-720-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-740-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-740-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-760-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-760-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-780-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-780-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-800-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loan-800-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-loan-640-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-loan-640-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-loan-660-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-loan-660-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-loan-700-credit-score"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-loan-700-credit-score.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-arkansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-arkansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-connecticut"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-connecticut.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-iowa"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-iowa.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-kansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-kansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-kentucky"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-kentucky.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-louisiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-louisiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-massachusetts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-massachusetts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-mississippi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-mississippi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-nevada"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-nevada.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-new-jersey"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-new-jersey.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-new-mexico"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-new-mexico.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-oklahoma"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-oklahoma.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-oregon"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-oregon.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-tennessee"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-tennessee.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-utah"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-utah.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/auto-loan-rates-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/bad-credit-personal-loans-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-banks-in-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-banks-in-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-banks-in-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-banks-in-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-banks-in-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-banks-in-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-arkansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-arkansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-bad-credit-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-bad-credit-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-connecticut"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-connecticut.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-iowa"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-iowa.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-kansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-kansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-kentucky"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-kentucky.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-louisiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-louisiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-maryland"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-maryland.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-massachusetts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-massachusetts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-mississippi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-mississippi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-nevada"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-nevada.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-new-jersey"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-new-jersey.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-new-mexico"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-new-mexico.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-oklahoma"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-oklahoma.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-oregon"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-oregon.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-tennessee"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-tennessee.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-utah"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-utah.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-high-yield-savings-account-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-high-yield-savings-account-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-cards-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/debt-consolidation-loans-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-arkansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-arkansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-iowa"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-iowa.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-kansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-kansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-kentucky"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-kentucky.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-louisiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-louisiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-maryland"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-maryland.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-massachusetts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-massachusetts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-mississippi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-mississippi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-nevada"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-nevada.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-new-jersey"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-new-jersey.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-new-mexico"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-new-mexico.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-oklahoma"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-oklahoma.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-oregon"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-oregon.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-tennessee"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-tennessee.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-utah"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-utah.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/heloc-rates-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/home-improvement-loans-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-arkansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-arkansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-connecticut"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-connecticut.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-idaho"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-idaho.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-iowa"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-iowa.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-kansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-kansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-kentucky"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-kentucky.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-louisiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-louisiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-maine"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-maine.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-maryland"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-maryland.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-massachusetts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-massachusetts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-mississippi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-mississippi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-nebraska"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-nebraska.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-nevada"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-nevada.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-hampshire"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-hampshire.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-jersey"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-jersey.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-mexico"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-mexico.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-oklahoma"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-oklahoma.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-oregon"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-oregon.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-tennessee"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-tennessee.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-utah"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-utah.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-west-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-west-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/mortgage-rates-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/payday-loan-alternatives-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/payday-loan-alternatives-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-alabama"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-alabama.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-alaska"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-alaska.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-arkansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-arkansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-connecticut"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-connecticut.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-delaware"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-delaware.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-hawaii"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-hawaii.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-idaho"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-idaho.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-iowa"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-iowa.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-kansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-kansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-kentucky"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-kentucky.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-louisiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-louisiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-maine"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-maine.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-maryland"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-maryland.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-massachusetts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-massachusetts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-mississippi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-mississippi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-montana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-montana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-nebraska"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-nebraska.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-nevada"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-nevada.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-hampshire"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-hampshire.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-jersey"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-jersey.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-mexico"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-mexico.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-north-dakota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-north-dakota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-oklahoma"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-oklahoma.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-oregon"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-oregon.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-rhode-island"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-rhode-island.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-south-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-south-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-south-dakota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-south-dakota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-tennessee"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-tennessee.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-utah"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-utah.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-vermont"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-vermont.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-west-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-west-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-wyoming"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-wyoming.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/savings-accounts-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-alabama"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-alabama.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-arizona"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-arizona.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-california"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-california.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-colorado"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-colorado.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-connecticut"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-connecticut.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-florida"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-florida.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-georgia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-georgia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-idaho"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-idaho.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-illinois"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-illinois.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-indiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-indiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-iowa"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-iowa.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-kansas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-kansas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-kentucky"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-kentucky.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-louisiana"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-louisiana.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-maryland"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-maryland.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-massachusetts"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-massachusetts.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-michigan"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-michigan.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-minnesota"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-minnesota.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-mississippi"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-mississippi.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-missouri"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-missouri.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-nebraska"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-nebraska.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-nevada"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-nevada.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-hampshire"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-hampshire.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-jersey"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-jersey.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-mexico"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-mexico.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-york"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-new-york.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-north-carolina"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-north-carolina.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-ohio"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-ohio.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-oklahoma"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-oklahoma.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-oregon"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-oregon.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-pennsylvania"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-pennsylvania.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-tennessee"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-tennessee.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-texas"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-texas.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-utah"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-utah.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-washington"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-washington.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-west-virginia"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-west-virginia.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-wisconsin"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/student-loans-wisconsin.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-excellent-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-excellent-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-fair-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-fair-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-good-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-good-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-poor-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-poor-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-very-good-credit"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/best-brokerage-very-good-credit.html"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-10000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-10000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-15000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-15000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-20000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-20000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-25000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-25000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-30000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-30000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-40000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-40000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-5000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-5000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-50000"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/loan-50000.html"
+  to = "/pages/guide-how-much-can-you-borrow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loan-vs-credit-card-debt-consolidation"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loan-vs-credit-card-debt-consolidation.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loan-vs-credit-card"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loan-vs-credit-card.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loan-vs-debt-consolidation"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loan-vs-debt-consolidation.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-platinum-vs-discover-it-secured"
+  to = "/pages/blog-best-secured-credit-cards"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-capital-one-platinum-vs-discover-it-secured.html"
+  to = "/pages/blog-best-secured-credit-cards"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-discover-it-secured-vs-capital-one-platinum"
+  to = "/pages/blog-best-secured-credit-cards"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-discover-it-secured-vs-capital-one-platinum.html"
+  to = "/pages/blog-best-secured-credit-cards"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-marcus-vs-lightstream-personal-loans"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-marcus-vs-lightstream-personal-loans.html"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-marcus-vs-sofi-personal-loan"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-marcus-vs-sofi-personal-loan.html"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-self-vs-chime-credit-builder"
+  to = "/pages/credit-building"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-self-vs-chime-credit-builder.html"
+  to = "/pages/credit-building"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-lendingclub-personal-loans"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-sofi-vs-lendingclub-personal-loans.html"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upgrade-vs-sofi-personal-loan"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upgrade-vs-sofi-personal-loan.html"
+  to = "/pages/personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-bnpl-vs-credit-card"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-bnpl-vs-credit-card.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-debt-consolidation-vs-bankruptcy"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-debt-consolidation-vs-bankruptcy.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-debt-snowball-vs-avalanche"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-debt-snowball-vs-avalanche.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-secured-vs-unsecured-credit-card"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/guide-secured-vs-unsecured-credit-card.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-vs-credit-card-vs-heloc"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-vs-credit-card-vs-heloc.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-550-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-550-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-600-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-600-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-650-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-650-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-700-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-700-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-credit-cards-700-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-credit-cards-700-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-580-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-580-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-600-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-600-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-620-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-620-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-640-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-640-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-660-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-660-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-680-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-680-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-700-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-700-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-720-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-720-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-740-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-740-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-760-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-760-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-780-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-780-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-800-credit-score"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-credit-cards-800-credit-score.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-580"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-580.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-600"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-600.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-620"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-620.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-640"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-640.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-660"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-660.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-680"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-680.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-700"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-700.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-720"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-720.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-740"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-740.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-760"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-760.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-780"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-780.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-800"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-800.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-850"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/credit-score-850.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-580-credit"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-580-credit.html"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-620-credit"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-620-credit.html"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-660-credit"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-660-credit.html"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-700-credit"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-balance-transfer-cards-700-credit.html"
+  to = "/pages/guide-balance-transfer-credit-card"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-business-credit-cards-fair-credit"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-business-credit-cards-fair-credit.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-business-credit-cards-good-credit"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-business-credit-cards-good-credit.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-fair-credit"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/best-credit-cards-fair-credit.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/large-personal-loan-fair-credit"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/large-personal-loan-fair-credit.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-rates-fair-credit"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-rates-fair-credit.html"
+  to = "/pages/guide-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-550-credit-score"
+  to = "/pages/bad-credit-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-550-credit-score.html"
+  to = "/pages/bad-credit-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-500-credit-score"
+  to = "/pages/bad-credit-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-500-credit-score.html"
+  to = "/pages/bad-credit-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-550-credit-score"
+  to = "/pages/bad-credit-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-550-credit-score.html"
+  to = "/pages/bad-credit-personal-loans"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-580-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-580-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-600-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-600-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-620-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-620-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-640-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-640-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-660-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-660-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-how-to-get-personal-loan-600-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-how-to-get-personal-loan-600-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-580-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-580-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-600-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-600-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-620-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-620-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-640-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-640-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-650-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-650-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-660-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-660-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-best-personal-loans-650-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-best-personal-loans-650-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-580-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-580-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-600-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-600-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-620-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-620-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-640-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-640-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-660-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-660-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-580-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-580-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-600-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-600-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-620-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-620-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-640-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-640-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-660-credit-score"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-660-credit-score.html"
+  to = "/pages/personal-loans-fair-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-680-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-680-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-700-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-700-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-720-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-720-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-740-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-740-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-760-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-760-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-780-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-780-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-800-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-best-personal-loans-800-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-680-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-680-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-700-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-700-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-720-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-720-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-740-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-740-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-760-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-760-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-780-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-780-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-800-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-personal-loans-800-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-680-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loan-680-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-680-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-680-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-700-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-700-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-720-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-720-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-750-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-750-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-800-credit-score"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/personal-loans-800-credit-score.html"
+  to = "/pages/personal-loans-good-credit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-upstart-vs-avant"
+  to = "/pages/compare-upstart-vs-avant"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-upstart-vs-avant.html"
+  to = "/pages/compare-upstart-vs-avant"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-avant"
+  to = "/pages/compare-upstart-vs-avant"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-avant.html"
+  to = "/pages/compare-upstart-vs-avant"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-avant-vs-upstart-bad-credit-loans"
+  to = "/pages/compare-upstart-vs-avant"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-avant-vs-upstart-bad-credit-loans.html"
+  to = "/pages/compare-upstart-vs-avant"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-upstart-vs-lending-club"
+  to = "/pages/compare-upstart-vs-lendingclub"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/blog-upstart-vs-lending-club.html"
+  to = "/pages/compare-upstart-vs-lendingclub"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-lendingclub"
+  to = "/pages/compare-upstart-vs-lendingclub"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-lendingclub.html"
+  to = "/pages/compare-upstart-vs-lendingclub"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upstart-vs-prosper"
+  to = "/pages/blog-upstart-vs-prosper"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upstart-vs-prosper.html"
+  to = "/pages/blog-upstart-vs-prosper"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-prosper"
+  to = "/pages/blog-upstart-vs-prosper"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-prosper.html"
+  to = "/pages/blog-upstart-vs-prosper"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upstart-vs-best-egg"
+  to = "/pages/compare-best-egg-vs-upstart"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/compare-upstart-vs-best-egg.html"
+  to = "/pages/compare-best-egg-vs-upstart"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-lightstream"
+  to = "/pages/compare-upstart-vs-lightstream"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-lightstream.html"
+  to = "/pages/compare-upstart-vs-lightstream"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-marcus"
+  to = "/pages/compare-upstart-vs-marcus"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-marcus.html"
+  to = "/pages/compare-upstart-vs-marcus"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-sofi"
+  to = "/pages/compare-upstart-vs-sofi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-sofi.html"
+  to = "/pages/compare-upstart-vs-sofi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-upgrade"
+  to = "/pages/compare-upstart-vs-upgrade"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/upstart-vs-upgrade.html"
+  to = "/pages/compare-upstart-vs-upgrade"
+  status = 301
+  force = true
+

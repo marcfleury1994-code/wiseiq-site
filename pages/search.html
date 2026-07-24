@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search | WiseIQ</title>
+<meta name="description" content="Search every WiseIQ guide, review, and calculator.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link href="/css/site.min.css?v=20260721" rel="stylesheet"/>
+<style>
+:root{--navy:#0B1F3A;--blue:#1A6FD4;--green:#16A34A;--ink:#0F172A;--slate:#475569;--slate-l:#64748B;--line:#E2E8F0;--bg:#F8FAFC;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+.search-hero{background:linear-gradient(160deg,#0B1F3A,#17345E);padding:52px 0 40px;}
+.search-hero h1{color:#fff;font-size:clamp(24px,3.5vw,34px);font-weight:800;letter-spacing:-.02em;margin-bottom:18px;}
+.search-box{position:relative;}
+.search-box input{width:100%;font-size:17px;padding:16px 20px;border-radius:12px;border:none;outline:none;box-shadow:0 8px 30px rgba(0,0,0,.25);font-family:inherit;}
+.filters{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.filters button{font-size:12.5px;font-weight:700;padding:6px 14px;border-radius:20px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:rgba(255,255,255,.8);cursor:pointer;font-family:inherit;}
+.filters button.on{background:#fff;color:#0B1F3A;border-color:#fff;}
+#results{padding:36px 0 72px;}
+.hit{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;text-decoration:none;transition:all .13s;}
+.hit:hover{box-shadow:0 6px 20px rgba(11,31,58,.08);border-color:#CBD5E1;transform:translateY(-1px);}
+.hit .cat{font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--slate-l);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:2px 7px;display:inline-block;margin-bottom:6px;}
+.hit .t{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.hit .d{font-size:13.5px;color:var(--slate);}
+.empty{color:var(--slate-l);text-align:center;padding:40px 0;font-size:15px;}
+mark{background:#FEF3C7;color:inherit;border-radius:2px;padding:0 1px;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="topnav">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+<div class="topnav-in">
+<a class="brand" href="/"><span>Wise<em>IQ</em></span></a>
+<nav class="navlinks">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+</nav>
+<label for="nav-toggle" class="nav-burger"><span></span><span></span><span></span></label>
+<a class="nav-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate</a>
+</div>
+<nav class="mobile-menu">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a class="mm-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate at Upstart →</a>
+</nav>
+</header>
+
+<div class="search-hero">
+  <div class="wrap">
+    <h1>Search WiseIQ</h1>
+    <div class="search-box"><input id="q" type="search" placeholder="Try &quot;620 credit score&quot;, &quot;debt consolidation&quot;, &quot;secured card&quot;..." autofocus autocomplete="off"></div>
+    <div class="filters" id="filters">
+      <button data-c="" class="on">All</button>
+      <button data-c="Loans">Loans</button>
+      <button data-c="Credit Building">Credit Building</button>
+      <button data-c="Credit Cards">Credit Cards</button>
+      <button data-c="Debt Relief">Debt Relief</button>
+      <button data-c="Tool">Tools</button>
+      <button data-c="Guides">Guides</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap"><div id="results"><div class="empty">Start typing to search 300+ guides, reviews, and tools.</div></div></div>
+
+<footer class="site-footer"><div class="wrap" style="max-width:1120px;">
+<div class="foot-legal" style="border-top:none;padding-top:0;">© 2026 WiseIQ · <a href="/pages/advertise.html" style="display:inline;">Advertiser disclosure</a> · <a href="/pages/privacy.html" style="display:inline;">Privacy</a></div>
+</div></footer>
+
+<script>
+(function(){
+  var idx=[], cat='', box=document.getElementById('q'), out=document.getElementById('results');
+  fetch('/js/search-index.json').then(function(r){return r.json();}).then(function(d){idx=d;run();});
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function hl(s,terms){var e=esc(s);terms.forEach(function(t){if(t.length<2)return;e=e.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');});return e;}
+  function run(){
+    var q=box.value.trim().toLowerCase(), terms=q.split(/\s+/).filter(Boolean);
+    var pool=idx.filter(function(p){return !cat||p.c===cat;});
+    if(!terms.length){out.innerHTML='<div class="empty">'+(cat?pool.length+' pages in this category — type to filter.':'Start typing to search 300+ guides, reviews, and tools.')+'</div>';if(cat)render(pool.slice(0,20),terms);return;}
+    var hits=pool.map(function(p){
+      var hay=(p.t+' '+p.d+' '+p.u).toLowerCase(), score=0;
+      terms.forEach(function(t){
+        if(p.t.toLowerCase().indexOf(t)>-1)score+=3;
+        else if(hay.indexOf(t)>-1)score+=1;
+      });
+      var all=terms.every(function(t){return hay.indexOf(t)>-1;});
+      return {p:p,s:all?score+2:score,all:all};
+    });
+    var strict=hits.filter(function(h){return h.all;});
+    var pool2=(strict.length?strict:hits.filter(function(h){return h.s>0;}));
+    hits=pool2.sort(function(a,b){return b.s-a.s;}).slice(0,30).map(function(h){return h.p;});
+    if(!hits.length){out.innerHTML='<div class="empty">No results for “'+esc(q)+'”. Try fewer words.</div>';return;}
+    if(!strict.length){out.innerHTML='<div class="empty" style="padding:16px 0 8px;">Closest matches for “'+esc(q)+'”:</div>';render(hits,terms);return;}
+    render(hits,terms);
+  }
+  function render(list,terms){
+    out.innerHTML=list.map(function(p){
+      return '<a class="hit" href="'+p.u+'"><span class="cat">'+esc(p.c)+'</span><div class="t">'+hl(p.t,terms)+'</div><div class="d">'+hl(p.d,terms)+'</div></a>';
+    }).join('');
+  }
+  box.addEventListener('input',run);
+  document.getElementById('filters').addEventListener('click',function(e){
+    if(e.target.tagName!=='BUTTON')return;
+    cat=e.target.getAttribute('data-c');
+    Array.prototype.forEach.call(this.children,function(b){b.classList.toggle('on',b===e.target);});
+    run();
+  });
+})();
+</script>
+<script src="/js/page-extras.js?v=20260721" defer></script>
+<script src="/js/wiq-outbound.js?v=20260721" defer></script>
+</body>
+</html>

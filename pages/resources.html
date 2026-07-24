@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script defer="" src="/js/wiq-perf.js?v=20260721"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://pagead2.googlesyndication.com" rel="dns-prefetch"/>
+<link href="https://www.googletagmanager.com" rel="dns-prefetch"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2974985022154356"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TM2341EPGP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TM2341EPGP');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial Resources &amp; Tools | WiseIQ</title>
+<meta content="Free guides, worksheets, and premium tools to help you improve your credit score, eliminate debt, and build wealth. From WiseIQ." name="description"/>
+<link href="https://wiseiq.net/pages/resources" rel="canonical"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="../css/style.v2.min.css?v=20260721" rel="stylesheet"/>
+<style>
+    .page-hero { background: linear-gradient(155deg, #0B1F3A 0%, #1A3A6B 100%); padding: 120px 0 64px; }
+    .page-hero h1 { color: #fff; font-size: clamp(28px, 4vw, 48px); font-weight: 900; margin: 0 0 14px; letter-spacing: -0.5px; }
+    .page-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 640px; line-height: 1.65; margin: 0; }
+    .page-hero .section-label { color: rgba(255,255,255,0.55); border-color: rgba(255,255,255,0.2); margin-bottom: 16px; }
+    .content-wrap { max-width: 960px; margin: 0 auto; padding: 64px 20px 100px; }
+    .section { margin-bottom: 64px; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid #E5E7EB; }
+    .section-header h2 { font-size: 24px; font-weight: 900; color: #0F172A; margin: 0; }
+    .section-header p { font-size: 14px; color: #64748B; margin: 0; }
+
+    /* Bundle spotlight */
+    .bundle-spotlight { background: linear-gradient(135deg, #0B1F3A, #1A3A6B); border-radius: 20px; padding: 48px 48px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin-bottom: 48px; }
+    .bundle-spotlight h2 { font-size: 26px; font-weight: 900; color: #fff; margin: 0 0 10px; letter-spacing: -0.5px; }
+    .bundle-spotlight p { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.65; margin: 0 0 20px; max-width: 520px; }
+    .bundle-includes { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+    .bundle-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); }
+    .bundle-cta { text-align: right; }
+    .bundle-price-old { font-size: 14px; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-bottom: 4px; }
+    .bundle-price-new { font-size: 44px; font-weight: 900; color: #fff; letter-spacing: -2px; line-height: 1; margin-bottom: 16px; }
+    .bundle-btn { display: inline-block; background: linear-gradient(135deg, #1A6FD4, #0B4EA6); color: #fff; font-size: 15px; font-weight: 800; padding: 14px 28px; border-radius: 12px; text-decoration: none; white-space: nowrap; transition: all 0.2s; }
+    .bundle-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,111,212,0.4); }
+    .bundle-savings { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 8px; }
+
+    /* Product cards */
+    .products-grid { display:flex;flex-direction:column; gap: 24px; }
+    .product-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 18px; overflow: hidden; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; }
+    .product-card:hover { border-color: #BFDBFE; box-shadow: 0 8px 28px rgba(26,111,212,0.1); transform: translateY(-3px); }
+    .product-card-header { padding: 28px 28px 0; }
+    .product-card-header .type-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; }
+    .product-card-header .type-badge.premium { background: #EFF6FF; color: #1E40AF; }
+    .product-card-header .type-badge.free { background: #F0FDF4; color: #14532D; }
+    .product-card-header h3 { font-size: 18px; font-weight: 900; color: #0F172A; margin: 0 0 8px; }
+    .product-card-header p { font-size: 14px; color: #64748B; line-height: 1.6; margin: 0; }
+    .product-card-body { padding: 20px 28px; flex: 1; }
+    .product-card-body ul { list-style: none; margin: 0; padding: 0; }
+    .product-card-body ul li { font-size: 13px; color: #475569; padding: 4px 0; padding-left: 18px; position: relative; }
+    .product-card-body ul li::before { content: "→"; position: absolute; left: 0; color: #1A6FD4; font-weight: 700; }
+    .product-card-footer { padding: 0 28px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .product-card-footer .price { font-size: 22px; font-weight: 900; color: #0F172A; }
+    .product-card-footer .price .original { font-size: 14px; color: #94A3B8; text-decoration: line-through; margin-right: 6px; font-weight: 500; }
+    .product-card-footer .price.free-price { color: #16A34A; font-size: 16px; }
+    .product-card-footer .view-btn { font-size: 13px; font-weight: 700; color: #1A6FD4; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+
+    /* Free resources */
+    .free-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .free-card { background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 14px; padding: 22px; text-decoration: none; transition: all 0.2s; }
+    .free-card:hover { background: #fff; border-color: #BFDBFE; box-shadow: 0 4px 16px rgba(26,111,212,0.08); }
+    .free-card .tag { font-size: 11px; font-weight: 700; color: #16A34A; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .free-card h3 { font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 6px; }
+    .free-card p { font-size: 13px; color: #64748B; line-height: 1.55; margin: 0; }
+
+    .disclosure-note { background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 12px; padding: 20px 24px; margin-top: 40px; }
+    .disclosure-note p { font-size: 14px; color: #92400E; line-height: 1.65; margin: 0; }
+
+    /* ── Suppress lender-specific UX injections on this page ── */
+    .wiq-why-picked { display: none !important; }
+    .wiq-calc { display: none !important; }
+    .wiq-compare-check-wrap { display: none !important; }
+    .wiq-compare-bar { display: none !important; }
+
+    /* ── New In-Depth Guides grid ── */
+    .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .guide-card { background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 14px; padding: 22px; text-decoration: none; transition: all 0.2s; display: block; }
+    .guide-card:hover { background: #fff; border-color: #BFDBFE; box-shadow: 0 4px 16px rgba(26,111,212,0.08); }
+    .guide-card .tag { font-size: 11px; font-weight: 700; color: #1A6FD4; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .guide-card h3 { font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 6px; }
+    .guide-card .read-link { font-size: 12px; font-weight: 700; color: #1A6FD4; margin-top: 10px; display: block; }
+
+    @media (max-width: 768px) {
+      .bundle-spotlight { grid-template-columns: 1fr; }
+      .bundle-cta { text-align: left; }
+      .products-grid { grid-template-columns: 1fr; }
+      .free-grid { grid-template-columns: 1fr; }
+      .guides-grid { grid-template-columns: 1fr; }
+    }
+  
+.hero h1,.hero-banner h1{color:#fff!important;}
+.hero h2,.hero-banner h2{color:rgba(255,255,255,0.9)!important;}
+.hero .sub,.hero-banner .sub{color:rgba(255,255,255,0.8)!important;}
+</style>
+<link href="/css/site.min.css?v=20260721" rel="stylesheet"/>
+<meta content="Financial Resources &amp; Tools | WiseIQ" property="og:title"/>
+<meta content="Free guides, worksheets, and premium tools to help you improve your credit score, eliminate debt, and build wealth." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://wiseiq.net/pages/resources.html" property="og:url"/>
+<meta content="https://wiseiq.net/assets/og-image.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="@WiseIQ" name="twitter:site"/>
+<meta content="Financial Resources &amp; Tools | WiseIQ" name="twitter:title"/>
+<meta content="Free guides, worksheets, and premium tools to help you improve your credit score, eliminate debt, and build wealth." name="twitter:description"/>
+<meta content="https://wiseiq.net/assets/og-image.jpg" name="twitter:image"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wiseiq.net/"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://wiseiq.net/pages/resources.html"}]}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Financial Resources &amp; Tools",
+  "image": "https://wiseiq.net/assets/og-image.jpg",
+  "datePublished": "2026-03-29",
+  "dateModified": "2026-05-01",
+  "author": {
+    "@type": "Organization",
+    "name": "WiseIQ"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WiseIQ",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wiseiq.net/favicon.ico"
+    }
+  },
+  "description": "Free guides, worksheets, and premium tools to help you improve your credit score, eliminate debt, and build wealth. From WiseIQ.",
+  "url": "https://wiseiq.net/pages/resources.html"
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What financial resources does WiseIQ provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WiseIQ provides comprehensive financial resources including guides, calculators, product comparisons, and educational articles covering credit, loans, investing, savings, and debt management."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I learn about personal finance basics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WiseIQ offers beginner-friendly guides on budgeting, credit scores, debt payoff strategies, and building savings. Our Guides section covers everything from opening your first bank account to planning for retirement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are WiseIQ resources free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All WiseIQ guides, calculators, and comparison tools are completely free. We earn revenue through affiliate partnerships when you apply for products, which allows us to keep all content free."
+      }
+    }
+  ]
+}</script>
+<script>
+(function(){
+  var html = document.documentElement;
+  var stored = localStorage.getItem('wiseiq-theme');
+  if(stored === 'dark') html.setAttribute('data-theme', 'dark');
+  
+  // Create toggle button
+  function createDarkModeToggle() {
+    var existing = document.getElementById('darkModeToggle');
+    if(existing) return;
+    var btn = document.createElement('button');
+    btn.id = 'darkModeToggle';
+    btn.className = 'dark-mode-toggle';
+    btn.setAttribute('aria-label', 'Toggle dark mode');
+    btn.setAttribute('title', 'Toggle dark mode');
+    btn.innerHTML = html.getAttribute('data-theme') === 'dark' 
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    btn.addEventListener('click', function(){
+      var isDark = html.getAttribute('data-theme') === 'dark';
+      if(isDark){
+        html.removeAttribute('data-theme');
+        localStorage.setItem('wiseiq-theme', 'light');
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('wiseiq-theme', 'dark');
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+    });
+    // Insert into navbar
+    var nav = document.querySelector('.nav-inner') || document.querySelector('nav') || document.querySelector('header');
+    if(nav) nav.appendChild(btn);
+    else document.body.appendChild(btn);
+  }
+  
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', createDarkModeToggle);
+  } else {
+    createDarkModeToggle();
+  }
+})();
+</script>
+<meta content="WiseIQ" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="2026-05-01T00:00:00+00:00" property="article:published_time"/>
+<meta content="2026-05-01T00:00:00+00:00" property="article:modified_time"/>
+<meta content="WiseIQ Editorial Team" property="article:author"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<link href="https://wiseiq.net/pages/resources.html" rel="canonical"/>
+<style id="wiq-card-enhance">
+/* ── Enhanced Product Card Styles ── */
+.product-card {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+.product-icon {
+  flex-shrink: 0 !important;
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  border-radius: 14px !important;
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: 8px !important;
+  margin-right: 16px !important;
+}
+.product-icon img {
+  width: 56px !important;
+  height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  object-fit: contain !important;
+}
+.product-rank-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1A6FD4;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-bottom: 6px;
+}
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0B1F3A;
+  margin-bottom: 2px;
+}
+.product-best-for {
+  font-size: 0.82rem;
+  color: #64748B;
+  font-weight: 500;
+}
+.product-feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+.product-feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #166534;
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+.product-feature-pill::before {
+  content: "✓";
+  font-size: 10px;
+  font-weight: 800;
+}
+/* Single-column card list */
+.products-list, .picks-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+}
+/* Pick card enhancements (investing-style) */
+.pick-card {
+  max-width: 100%;
+}
+.pick-logo-circle {
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+}
+.pick-logo-circle span {
+  font-size: 1.4rem !important;
+}
+</style>
+<script defer="" src="/js/wiq-schema.js?v=20260721"></script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0a7ea4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="padding-top:88px;padding-bottom:0;">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a class="breadcrumb-link" href="/index.html">Home</a>
+<span class="breadcrumb-sep"><svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="12"><path d="M9 18l6-6-6-6"></path></svg></span>
+<span class="breadcrumb-current">Resources</span>
+</nav>
+</div>
+<header class="topnav">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+<div class="topnav-in">
+<a class="brand" href="/"><span>Wise<em>IQ</em></span></a>
+<nav class="navlinks">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a class="nav-search" href="/pages/search.html">Search</a>
+</nav>
+<label for="nav-toggle" class="nav-burger"><span></span><span></span><span></span></label>
+<a class="nav-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate</a>
+</div>
+<nav class="mobile-menu">
+<a href="/pages/personal-loans.html">Loans</a>
+<a href="/pages/credit-building.html">Credit Building</a>
+<a href="/pages/debt-relief.html">Debt Relief</a>
+<a href="/pages/credit-cards.html">Credit Cards</a>
+<a href="/pages/resources.html">Guides &amp; Tools</a>
+<a href="/pages/search.html">Search</a>
+<a class="mm-cta" href="https://upstart.9c65.net/9VW6GY" rel="sponsored noopener" target="_blank">Check My Rate at Upstart →</a>
+</nav>
+</header>
+<div class="page-hero">
+<div class="container">
+<div class="section-label">Resources</div>
+<h1>Financial Tools &amp; Guides</h1>
+<div class="compact-rate-banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#EEF4FF;border:1px solid #BFDBFE;border-left:4px solid #1a6fb5;border-radius:8px;padding:10px 18px;margin:16px 0;">
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+<span style="font-size:0.65rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:#1a6fb5;color:#fff;padding:2px 8px;border-radius:20px;white-space:nowrap;">PARTNER OFFER</span>
+<span style="font-size:1.05rem;font-weight:800;color:#1a6fb5;">From 6.2% APR</span>
+<span style="font-size:0.82rem;color:#374151;">at Upstart · Soft credit check only</span>
+</div>
+<a href="https://upstart.9c65.net/9VW6GY" target="_blank" rel="sponsored noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1a6fb5;color:#fff;padding:9px 18px;border-radius:7px;font-weight:700;font-size:0.84rem;text-decoration:none;white-space:nowrap;flex-shrink:0;" target="_blank">
+    Check Rate — No Hard Pull
+    <svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="13"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+<div style="font-size:12px;color:#6B7280;margin-bottom:8px;display:flex;align-items:center;gap:6px;"><svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12"><rect height="18" rx="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>Last reviewed: April 2026</div>
+<p>Free articles, calculators, and premium worksheets to help you improve your credit score, eliminate debt, and build wealth — with information that actually makes a difference.</p>
+</div>
+</div>
+<article class="content-wrap">
+<!-- Master Bundle spotlight -->
+<div class="bundle-spotlight" style="background:linear-gradient(145deg,#1A0533,#3B0764);border:2px solid #7C3AED;">
+<div>
+<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#FDE68A;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;">⭐ Best Value — All 5 Products</div>
+<h2 style="color:#fff;">Credit &amp; Debt Master Bundle</h2>
+<p style="color:rgba(255,255,255,0.75);">All 5 WiseIQ products in one complete system. Fix your credit, eliminate your debt, negotiate with creditors, and prepare to buy a home — 80+ pages of actionable content.</p>
+<div class="bundle-includes">
+<span class="bundle-tag">📋 Credit Repair Kit</span>
+<span class="bundle-tag">💰 Debt Planner</span>
+<span class="bundle-tag">📊 Score Cheat Sheet</span>
+<span class="bundle-tag">📞 Negotiation Scripts</span>
+<span class="bundle-tag">🏠 Homebuyer Guide</span>
+</div>
+</div>
+<div class="bundle-cta">
+<div class="bundle-price-old">$77 separately</div>
+<div class="bundle-price-new" style="color:#F59E0B;">$47</div>
+<a class="bundle-btn" href="/pages/credit-debt-master-bundle.html" style="background:linear-gradient(135deg,#F59E0B,#D97706);">Get All 5 →</a>
+<div class="bundle-savings">Save $30 · 30-day guarantee</div>
+</div>
+</div>
+<!-- Starter Bundle -->
+<div class="bundle-spotlight" style="margin-bottom:48px;">
+<div>
+<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,220,50,0.15);border:1px solid rgba(255,220,50,0.3);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#FDE68A;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;">Bundle — Save $7</div>
+<h2>Financial Starter Pack</h2>
+<p>The Credit Repair Action Kit and Debt Freedom Planner together. Fix your credit and eliminate your debt with one purchase at a discount.</p>
+<div class="bundle-includes">
+<span class="bundle-tag">📋 Credit Repair Action Kit</span>
+<span class="bundle-tag">💰 Debt Freedom Planner</span>
+<span class="bundle-tag">35 pages total</span>
+<span class="bundle-tag">Instant download</span>
+</div>
+</div>
+<div class="bundle-cta">
+<div class="bundle-price-old">$34 separately</div>
+<div class="bundle-price-new">$27</div>
+<a class="bundle-btn" href="/pages/financial-starter-pack.html">View Bundle →</a>
+<div class="bundle-savings">Save $7 · 30-day guarantee</div>
+</div>
+</div>
+<!-- Premium products -->
+<div class="section">
+<div class="section-header">
+<h2>Premium Products</h2>
+<p>Worksheets, templates, and action plans</p>
+</div>
+<div class="products-grid">
+<a class="product-card" href="/pages/credit-repair-action-kit.html">
+<div class="product-card-header">
+<div class="type-badge premium">Premium · PDF Download</div>
+<h3>Credit Repair Action Kit</h3>
+<p>A 90-day action plan, 5 dispute letter templates with real FCRA/FDCPA language, and a monthly score tracker. Clean up your credit yourself.</p>
+</div>
+<div class="product-card-body">
+<ul>
+<li>Week-by-week 90-Day Action Plan</li>
+<li>5 Dispute Letter Templates (FCRA + FDCPA)</li>
+<li>Monthly Credit Score Tracker</li>
+<li>Per-card utilization tracker</li>
+<li>Negative item removal log</li>
+</ul>
+</div>
+
+</a>
+<a class="product-card" href="/pages/debt-freedom-planner.html">
+<div class="product-card-header">
+<div class="type-badge premium">Premium · PDF Download</div>
+<h3>Debt Freedom Planner</h3>
+<p>Snowball and Avalanche worksheets, zero-based monthly budget, sinking fund guide, and a 12-month net worth tracker.</p>
+</div>
+<div class="product-card-body">
+<ul>
+<li>Full debt inventory with true cost calculator</li>
+<li>Debt Snowball + Avalanche worksheets</li>
+<li>Zero-based monthly budget template</li>
+<li>12-month net worth tracker</li>
+<li>Debt-to-income ratio tracker</li>
+</ul>
+</div>
+
+</a>
+<a class="product-card" href="/pages/credit-score-boost-cheat-sheet.html">
+<div class="product-card-header">
+<div class="type-badge premium">Premium · PDF Download</div>
+<h3>Credit Score Boost Cheat Sheet</h3>
+<p>7 highest-impact actions ranked by realistic point gain and time to reflect. The fastest path to a meaningfully better score.</p>
+</div>
+<div class="product-card-body">
+<ul>
+<li>7 actions ranked by impact and speed</li>
+<li>180-day improvement timeline</li>
+<li>Free monitoring tools comparison</li>
+<li>5 credit score myths debunked</li>
+</ul>
+</div>
+
+</a>
+<a class="product-card" href="/pages/debt-negotiation-scripts.html">
+<div class="product-card-header">
+<div class="type-badge premium">Premium · PDF Download</div>
+<h3>Debt Negotiation Scripts</h3>
+<p>7 word-for-word phone scripts for negotiating lower rates, hardship programs, debt settlements, pay-for-delete, and goodwill removals.</p>
+</div>
+<div class="product-card-body">
+<ul>
+<li>Interest rate reduction script</li>
+<li>Hardship program enrollment script</li>
+<li>Debt settlement script (40–60 cents)</li>
+<li>Pay-for-delete + goodwill scripts</li>
+<li>FDCPA rights guide included</li>
+</ul>
+</div>
+
+</a>
+<a class="product-card" href="/pages/first-time-homebuyer-prep-guide.html">
+<div class="product-card-header">
+<div class="type-badge premium">Premium · PDF Download</div>
+<h3>First-Time Homebuyer Prep Guide</h3>
+<p>A 12-month mortgage readiness plan with lender benchmarks, DTI targets, down payment strategy, and rate shopping guidance.</p>
+</div>
+<div class="product-card-body">
+<ul>
+<li>Lender benchmarks by loan type</li>
+<li>12-month prep checklist</li>
+<li>Down payment assistance programs</li>
+<li>Rate shopping without hurting your score</li>
+<li>True cost of your credit score calculator</li>
+</ul>
+</div>
+
+</a>
+</div>
+</div>
+<!-- Free resources -->
+<div class="section">
+<div class="section-header">
+<h2>Free Guides &amp; Articles</h2>
+<p>No purchase required</p>
+</div>
+<div class="free-grid">
+
+<a href="/pages/credit-building.html" style="text-decoration:none;color:inherit;display:block;"><div class="tag">Free Guide</div>
+<h3>Credit Score Guide</h3>
+<p>What your credit score actually means, how it's calculated, and the fastest ways to improve it.</p></a>
+
+<a class="free-card" href="/pages/guide-dispute-credit-report-errors.html">
+<div class="tag">Free Article</div>
+<h3>How to Dispute Credit Report Errors</h3>
+<p>Step-by-step guide to finding and disputing errors on your credit report with all three bureaus.</p>
+</a>
+<a class="free-card" href="/pages/guide-personal-loans.html">
+<div class="tag">Free Article</div>
+<h3>Debt Snowball vs. Avalanche</h3>
+<p>A detailed comparison of both debt payoff methods with real examples to help you choose.</p>
+</a>
+<a class="free-card" href="/pages/what-is-a-credit-utilization-ratio.html">
+<div class="tag">Free Article</div>
+<h3>What Is Credit Utilization?</h3>
+<p>The 30% rule, the real 10% target, and the statement closing date trick most people don't know.</p>
+</a>
+<a class="free-card" href="/pages/calculator-loan-hub.html">
+<div class="tag">Free Tool</div>
+<h3>Personal Loan Calculator</h3>
+<p>Calculate monthly payments and total interest for any loan amount, rate, and term.</p>
+</a>
+<a class="free-card" href="/pages/calculator-credit-card-payoff-hub.html">
+<div class="tag">Free Tool</div>
+<h3>Credit Card Payoff Calculator</h3>
+<p>See exactly how long it will take to pay off your credit card balance and how much interest you'll pay.</p>
+</a>
+</div>
+</div>
+<div class="section" style="margin-top:40px;">
+<div class="section-header">
+<h2>Investing Research Tools</h2>
+<p>Free &amp; premium tools for stock and ETF research</p>
+</div>
+<div class="free-grid">
+<a href="/pages/stock-analysis-pro-review.html" style="text-decoration:none;color:inherit;display:block;"><div class="tag">Free Review</div>
+<h3>Stock Analysis Pro Review</h3>
+<p>What the free tier already does, what Pro adds, and who shouldn't buy it. WiseIQ readers get 10% off with code WISEIQ.</p></a>
+<a href="/pages/stock-screener-tutorial.html" style="text-decoration:none;color:inherit;display:block;"><div class="tag">Free Tutorial</div>
+<h3>How to Screen Stocks</h3>
+<p>Build a real 5-filter screen step by step — market cap, margins, debt, growth, then valuation — on a free screener, no account needed.</p></a>
+<a href="/pages/coinbase-review.html" style="text-decoration:none;color:inherit;display:block;"><div class="tag">Honest Review</div>
+<h3>Coinbase Review</h3>
+<p>They pay us for signups — and our first advice is that many readers shouldn't buy crypto yet. Fees, custody, and the whole picture.</p></a>
+</div>
+</div>
+
+<div class="disclosure-note">
+<p><strong>Not Financial Advice:</strong> All content on this page is for educational and informational purposes only. WiseIQ is not a bank, lender, credit repair organization, or licensed financial advisor. Product terms and availability are subject to change. Consult a licensed financial professional before making major financial decisions.</p>
+</div>
+</article>
+<section style="max-width:960px;margin:0 auto;padding:0 20px 80px;">
+<div class="section-header" style="margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid #E5E7EB;display:flex;align-items:baseline;justify-content:space-between;">
+<h2 style="font-size:24px;font-weight:900;color:#0F172A;margin:0;">New In-Depth Guides (2026)</h2>
+<p style="font-size:14px;color:#64748B;margin:0;">Free to read</p>
+</div>
+<div class="guides-grid">
+<a class="guide-card" href="guide-dispute-credit-report-errors.html">
+<div class="tag">Credit</div>
+<h3>How to Dispute Credit Report Errors Yourself</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="/pages/guide-personal-loans.html">
+<div class="tag">Debt</div>
+<h3>Debt Snowball vs. Avalanche: Which Works?</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="guide-credit-score-to-buy-house.html">
+<div class="tag">Home Buying</div>
+<h3>What Credit Score Do You Need to Buy a House?</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="guide-how-to-negotiate-with-debt-collectors.html">
+<div class="tag">Debt</div>
+<h3>How to Negotiate with Debt Collectors</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="guide-raise-credit-score-100-points.html">
+<div class="tag">Credit</div>
+<h3>How to Raise Your Credit Score 100 Points</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="average-debt-by-state.html">
+<div class="tag">Data</div>
+<h3>Average Debt by State 2026</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="average-credit-score-by-state.html">
+<div class="tag">Data</div>
+<h3>Average Credit Score by State 2026</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+<a class="guide-card" href="calculator-debt-payoff.html">
+<div class="tag">Tool</div>
+<h3>Free Debt Payoff Calculator</h3>
+<span class="read-link">Use Calculator →</span>
+</a>
+<a class="guide-card" href="guide-build-credit-from-zero.html">
+<div class="tag">Credit</div>
+<h3>How to Build Credit From Zero</h3>
+<span class="read-link">Read Guide →</span>
+</a>
+</div>
+</section>
+<footer class="site-footer"><div class="wrap">
+<div class="foot-grid">
+<div><div class="foot-brand">Wise<em>IQ</em></div><p class="foot-tag">Honest money help for fair credit. We tell you exactly who pays us — and who doesn't.</p></div>
+<div><div class="foot-h">Personal Loans</div>
+<a href="/pages/bad-credit-personal-loans.html">Bad credit (under 580)</a>
+<a href="/pages/personal-loans-fair-credit.html">Fair credit (580–669)</a>
+<a href="/pages/personal-loans-good-credit.html">Good credit (670+)</a>
+<a href="/pages/guide-personal-loans.html">The complete guide</a></div>
+<div><div class="foot-h">Credit Building</div>
+<a href="/pages/credit-building.html">Credit building hub</a>
+<a href="/pages/guide-dispute-credit-report-errors.html">Dispute report errors</a>
+<a href="/pages/guide-remove-hard-inquiries.html">Remove hard inquiries</a>
+<a href="/pages/credit-score-simulator.html">Score simulator</a></div>
+<div><div class="foot-h">Tools</div>
+<a href="/pages/calculator-credit-card-payoff.html">Card payoff calculator</a>
+<a href="/pages/calculator-personal-loan.html">Loan calculator</a>
+<a href="/pages/calculator-debt-to-income.html">DTI calculator</a>
+<a href="/pages/resources.html">All guides &amp; tools</a></div>
+<div><div class="foot-h">Company</div>
+<a href="/pages/about.html">About</a>
+<a href="/pages/how-we-rank.html">How we rank</a>
+<a href="/pages/advertise.html">Advertiser disclosure</a>
+<a href="/pages/privacy.html">Privacy</a>
+<a href="/pages/terms.html">Terms</a></div>
+</div>
+<div class="foot-legal">© 2026 WiseIQ · WiseIQ is not a lender and does not make credit decisions. Rates and terms shown are set by lenders and subject to change. Not financial advice.</div>
+</div></footer>
+<script defer="" src="../js/links.js?v=20260721"></script>
+<script defer="" src="../js/icons.js?v=20260721"></script>
+<footer class="site-footer"><div class="wrap">
+<div class="foot-grid">
+<div><div class="foot-brand">Wise<em>IQ</em></div><p class="foot-tag">Honest money help for fair credit. We tell you exactly who pays us — and who doesn't.</p></div>
+<div><div class="foot-h">Personal Loans</div>
+<a href="/pages/bad-credit-personal-loans.html">Bad credit (under 580)</a>
+<a href="/pages/personal-loans-fair-credit.html">Fair credit (580–669)</a>
+<a href="/pages/personal-loans-good-credit.html">Good credit (670+)</a>
+<a href="/pages/guide-personal-loans.html">The complete guide</a></div>
+<div><div class="foot-h">Credit Building</div>
+<a href="/pages/credit-building.html">Credit building hub</a>
+<a href="/pages/guide-dispute-credit-report-errors.html">Dispute report errors</a>
+<a href="/pages/guide-remove-hard-inquiries.html">Remove hard inquiries</a>
+<a href="/pages/credit-score-simulator.html">Score simulator</a></div>
+<div><div class="foot-h">Tools</div>
+<a href="/pages/calculator-credit-card-payoff.html">Card payoff calculator</a>
+<a href="/pages/calculator-personal-loan.html">Loan calculator</a>
+<a href="/pages/calculator-debt-to-income.html">DTI calculator</a>
+<a href="/pages/resources.html">All guides &amp; tools</a></div>
+<div><div class="foot-h">Company</div>
+<a href="/pages/about.html">About</a>
+<a href="/pages/how-we-rank.html">How we rank</a>
+<a href="/pages/advertise.html">Advertiser disclosure</a>
+<a href="/pages/privacy.html">Privacy</a>
+<a href="/pages/terms.html">Terms</a></div>
+</div>
+<div class="foot-legal">© 2026 WiseIQ · WiseIQ is not a lender and does not make credit decisions. Rates and terms shown are set by lenders and subject to change. Not financial advice.</div>
+</div></footer>
+<button aria-label="Back to top" id="back-to-top">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+<script defer="" src="../js/rate-alert.js?v=20260721"></script>
+<script data-category="general" defer="True" src="../js/wiq-telemetry.js?v=20260721"></script><script defer="" src="../js/wiq-instant-calc.js?v=20260721"></script><script src="/js/page-extras.js?v=20260721" defer></script>
+<script src="/js/wiq-outbound.js?v=20260721" defer></script>
+</body>
+</html>
